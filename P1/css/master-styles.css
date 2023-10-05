@@ -1,0 +1,60 @@
+/* ------------------ */
+/* USE THIS FILE TO STORE GLOBAL STYLES FOR THE ENTIRE PROJECT */
+/* ------------------ */
+
+:root {
+    --purple: #3C0757;
+    --lightgrey: #F9F9F9;
+    --darkgrey: #CCCCCC;
+}
+
+.logolink{
+    font-size: 30px;
+    font-family: 'Lato', sans-serif;
+    font-weight:900;
+    color: var(--purple);
+}
+
+.navbar{
+    border-bottom: 1px solid var(--darkgrey);
+}
+
+.nav-link{
+    font-weight:600;
+    padding-bottom: 0;
+    color: var(--darkgrey);
+}
+
+.nav-item.active .nav-link{
+    color:var(--purple);
+}
+
+.notif-icon-container{
+    display:inline-block;
+    position: relative;
+}
+
+.notif-icon{
+    border: 1px solid var(--darkgrey);
+    border-radius: 50%;
+    padding: 6px;
+    color:black;
+}
+
+.notif-icon-container .notif-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 5px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: white;
+}
+
+.vertical-rule{
+    border-left:1px solid var(--darkgrey);
+    height:50px;
+    margin: 0px 20px;
+}
+
+
