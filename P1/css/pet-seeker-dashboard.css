@@ -39,14 +39,22 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    flex: 1;
+    justify-content: space-around;
+    font-size: 1.3em;
 }
 
 .content .dashboard-Profile-Tag > :nth-child(2){
+    display: block;
     font-weight: 200;
     font-size: 0.7em;
+    color: purple;
 }
+
+.content .dashboard-Profile-Tag > :nth-child(1){
+    font-weight: 500;
+    font-size: 1em;
+}
+
 @media (max-width: 576px){
 
     .content #side-navbar {

@@ -27,7 +27,7 @@
     <link href="../css/pet-search.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
-      href="../css/pet-seeker-dashboard.css"
+      href="../css/pet-seeker-adoption.css"
       type="text/css"
     />
   </head>
@@ -35,7 +35,24 @@
     <div id="top-navbar"></div>
     <div class="content">
       <div id="side-navbar"></div>
-      <div class="main-content"></div>
+      <div class="main-content">
+        <div class="pet-order-search">
+          <div>Your Orders</div>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search Your Orders"
+              aria-label="Search"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- bootstrap stylings -->
@@ -62,9 +79,8 @@
           "../html/components/side-nevigation-bar.html",
           function () {
             var element = $(
-              ".nav-link[href='../html/pet-seeker-adaption.html']"
+              ".nav-link[href='../html/pet-seeker-adoption.html']"
             );
-            console.log(element);
             element.addClass("active");
           }
         );

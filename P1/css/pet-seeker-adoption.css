@@ -1,0 +1,49 @@
+.content{
+    display: flex;
+    overflow: hidden;
+}
+
+.content .main-content{
+    flex-grow: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.content .pet-order-search{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-around
+}
+
+.content .pet-order-search > :nth-child(2){
+    max-width: 20%;
+}
+
+.content .pet-order-search > :first-child{
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+@media (max-width: 576px){
+
+    .content #side-navbar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .content .main-content {
+        width: 100%;
+    }
+
+    .content input{
+        display: none;
+    }
+}
