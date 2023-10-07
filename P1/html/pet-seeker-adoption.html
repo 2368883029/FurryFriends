@@ -74,10 +74,17 @@
 
     <script>
       $(document).ready(function () {
-        $("#top-navbar").load("../html/components/top-nevigation-bar.html");
+        $("#top-navbar").load(
+          "../html/components/top-nevigation-bar.html",
+          function (response, status) {
+            if (status === "error") {
+              $("#top-navbar").html("<p>Error in jQuery file loading.</p>");
+            }
+          }
+        );
         $("#side-navbar").load(
           "../html/components/side-nevigation-bar.html",
-          function () {
+          function (response, status) {
             var element = $(
               ".nav-link[href='../html/pet-seeker-adoption.html']"
             );
