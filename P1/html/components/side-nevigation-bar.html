@@ -1,0 +1,115 @@
+<div class="sidenav">
+  <nav class="top-group nav nav-pills">
+    <a
+      class="nav-link btn d-flex align-items-center"
+      href="../html/pet-seeker-dashboard.html"
+    >
+      <span class="material-symbols-outlined"> account_circle </span>
+      <span id="text">Profile</span>
+    </a>
+    <a class="nav-link btn d-flex align-items-center" href="#">
+      <span class="material-symbols-outlined"> inventory_2 </span>
+      <span id="text">Your Adaption</span>
+    </a>
+    <a class="nav-link btn d-flex align-items-center" href="#">
+      <span class="material-symbols-outlined"> passkey </span>
+      <span id="text">Login & Security</span>
+    </a>
+    <a class="nav-link btn d-flex align-items-center" href="#">
+      <span class="material-symbols-outlined"> credit_card </span>
+      <span id="text">Payment Method</span>
+    </a>
+    <hr class="opacity-75 my-1" />
+    <a class="nav-link btn d-flex align-items-center mb-2" href="#">
+      <span class="material-symbols-outlined"> help </span>
+      <span id="text">Adoption Help</span>
+    </a>
+  </nav>
+  <div class="bottom-group flex-column nav nav-pills">
+    <a class="nav-link btn d-flex align-items-center" href="#">
+      <span class="material-symbols-outlined"> logout </span>
+      <span id="text">Exit</span>
+    </a>
+  </div>
+</div>
+
+<!-- Component CSS -->
+<style>
+  .sidenav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+    width: 280px;
+    background-color: #fff;
+    padding-top: 10px;
+    font-weight: 500;
+  }
+
+  .sidenav .btn {
+    padding: 10px 15px;
+    color: #1f1f1f;
+    background-color: #fff;
+  }
+
+  .sidenav hr {
+    width: 90%;
+  }
+
+  .sidenav .material-symbols-outlined {
+    line-height: 1;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+
+  .sidenav #text {
+    font-size: 18px;
+  }
+
+  .sidenav .nav-link.active {
+    background-color: var(--purple);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  .top-group,
+  .bottom-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 576px) {
+    .sidenav {
+      max-height: 100px;
+      width: 100%;
+      flex-direction: row;
+    }
+
+    .sidenav .top-group {
+      max-height: 100px;
+      flex-direction: row;
+      justify-content: space-around;
+      flex: 1;
+    }
+
+    .sidenav .bottom-group,
+    .sidenav hr,
+    .sidenav #text {
+      display: none;
+    }
+
+    .sidenav .nav-link.active {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .sidenav .material-symbols-outlined {
+      margin-right: 0px;
+    }
+
+    .sidenav .btn {
+      width: 20%;
+      justify-content: center;
+    }
+  }
+</style>

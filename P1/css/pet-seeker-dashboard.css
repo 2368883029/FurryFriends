@@ -1,0 +1,46 @@
+.content{
+    display: flex;
+    overflow: hidden;
+}
+
+.content .main-content{
+    flex-grow: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.content .dashPic{
+    border-radius: 50%;
+    box-sizing: border-box;
+    height:150px;
+    width:150px;
+    overflow:hidden;
+    margin-top: 2rem;
+}
+
+.content .dashPic > img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.content .dashPic + div{
+    font-weight: 500;
+    font-size: 1.5rem
+}
+
+@media (max-width: 576px){
+
+    .content #side-navbar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .content .main-content {
+        width: 100%;
+    }
+}
