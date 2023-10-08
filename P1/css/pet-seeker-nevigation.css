@@ -91,4 +91,8 @@
       width: 20%;
       justify-content: center;
     }
+
+    .content{
+      margin-bottom: 100px;
+    }
   }
