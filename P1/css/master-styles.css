@@ -85,4 +85,6 @@ a.nav-link:hover{
     width:100%;
 }
 
-
+.btn > span{
+    vertical-align:middle;
+}
