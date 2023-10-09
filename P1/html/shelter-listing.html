@@ -41,7 +41,7 @@
     />
     <link
       rel="stylesheet"
-      href="../css/shelter-dashboard.css"
+      href="../css/shelter-listing.css"
       type="text/css"
     />
   </head>
@@ -96,15 +96,15 @@
         <div class="sidenav">
           <nav class="top-group nav nav-pills">
             <a
-              class="nav-link btn d-flex align-items-center active"
+              class="nav-link btn d-flex align-items-center"
               href="../html/shelter-dashboard.html"
             >
               <span class="material-symbols-outlined"> account_circle </span>
               <span id="text">Profile</span>
             </a>
             <a
-              class="nav-link btn d-flex align-items-center"
-              href="../html/shelter-listing.html"
+              class="nav-link btn d-flex align-items-center active"
+              href="../html/pet-seeker-adoption.html"
             >
               <span class="material-symbols-outlined"> inventory_2 </span>
               <span id="text">Listings</span>
@@ -133,72 +133,8 @@
 
       <!--Main Content-->
       <div class="main-content">
-        <div class="shelterPic">
-          <img src="../imgs/shelter-house.jpg" alt="shelter pic" />
-        </div>
-        <div class="shelter-rating">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
-        <div>Toronto Animal Rescue</div>
-        <p class="description">
-          Located in 555 Turner Village, Toronto, Ontario, Canada. Vaughan Animal Services is dedicated to creating a 
-          safe community for pets and their owners. Services include dog and cat licensing, animal control by-law 
-          education, pick up of injured or sick dogs, cats and wildlife (as well as stray dogs), reuniting owners 
-          with lost pets and pet adoption.
-        </p>
-        <div class="align-cards">
-          <div class="card">
-            <div class="pet-image">
-              <img src="../imgs/happy-dog.jpg" alt="Avatar" style="width: 100%;">
-            </div>
-            <div class="pet-card-name">
-              Goodest Boi
-            </div>
-            <div class="pet-card-information">
-              Male Corgi
-            </div>
-            <div class="additional-pet-info">
-              <p>
-                <span class="material-symbols-outlined"> weight </span
-                >4.5lbs/2 years old
-              </p>
-              <p>
-                <span class="material-symbols-outlined"> home </span
-                >Toronto Animal Rescue
-              </p>
-              <a href="" class="btn btn-secondary btn-petdetail">
-                <span class="material-symbols-outlined"> info </span>
-                <span id="text">More Details</span>
-              </a>
-            </div>
-          </div>
-          <div class="card">
-            <div class="pet-image">
-              <img src="../imgs/happy-dog.jpg" alt="Avatar" style="width: 100%;">
-            </div>
-            <div class="pet-card-name">
-              Goodest Boi
-            </div>
-            <div class="pet-card-information">
-              Male Corgi
-            </div>
-            <div class="additional-pet-info">
-              <p>
-                <span class="material-symbols-outlined"> weight </span
-                >4.5lbs/2 years old
-              </p>
-              <p>
-                <span class="material-symbols-outlined"> home </span
-                >Toronto Animal Rescue
-              </p>
-              <a href="" class="btn btn-secondary btn-petdetail">
-                <span class="material-symbols-outlined"> info </span>
-                <span id="text">More Details</span>
-              </a>
-            </div>
-          </div>
+        <div class="manage-listings">
+            Manage Listings
         </div>
         <div class="align-cards">
           <div class="card">
@@ -220,7 +156,10 @@
                 <span class="material-symbols-outlined"> home </span
                 >Toronto Animal Rescue
               </p>
-              <a href="" class="btn btn-secondary btn-petdetail">
+              <p class="publish-date">
+                Published in April 25th, 2001
+              </p>
+              <a href="./pet-details.html" class="btn btn-secondary btn-petdetail">
                 <span class="material-symbols-outlined"> info </span>
                 <span id="text">More Details</span>
               </a>
@@ -245,12 +184,77 @@
                 <span class="material-symbols-outlined"> home </span
                 >Toronto Animal Rescue
               </p>
-              <a href="" class="btn btn-secondary btn-petdetail">
+              <p class="publish-date">
+                Published in April 25th, 2001
+              </p>
+              <a href="./pet-details.html" class="btn btn-secondary btn-petdetail">
                 <span class="material-symbols-outlined"> info </span>
                 <span id="text">More Details</span>
               </a>
             </div>
           </div>
+        </div>
+        <div class="align-cards">
+          <div class="card">
+            <div class="pet-image">
+              <img src="../imgs/happy-dog.jpg" alt="Avatar" style="width: 100%;">
+            </div>
+            <div class="pet-card-name">
+              Goodest Boi
+            </div>
+            <div class="pet-card-information">
+              Male Corgi
+            </div>
+            <div class="additional-pet-info">
+              <p>
+                <span class="material-symbols-outlined"> weight </span
+                >4.5lbs/2 years old
+              </p>
+              <p>
+                <span class="material-symbols-outlined"> home </span
+                >Toronto Animal Rescue
+              </p>
+              <p class="publish-date">
+                Published in April 25th, 2001
+              </p>
+              <a href="./pet-details" class="btn btn-secondary btn-petdetail">
+                <span class="material-symbols-outlined"> info </span>
+                <span id="text">More Details</span>
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pet-image">
+              <img src="../imgs/happy-dog.jpg" alt="Avatar" style="width: 100%;">
+            </div>
+            <div class="pet-card-name">
+              Goodest Boi
+            </div>
+            <div class="pet-card-information">
+              Male Corgi
+            </div>
+            <div class="additional-pet-info">
+              <p>
+                <span class="material-symbols-outlined"> weight </span
+                >4.5lbs/2 years old
+              </p>
+              <p>
+                <span class="material-symbols-outlined"> home </span
+                >Toronto Animal Rescue
+              </p>
+              <p class="publish-date">
+                Published in April 25th, 2001
+              </p>
+              <a href="./pet-details.html" class="btn btn-secondary btn-petdetail">
+                <span class="material-symbols-outlined"> info </span>
+                <span id="text">More Details</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="../html/shelter-dashboard.html" class="add-listing">
+            <img src="../imgs/plus-icon.png">
+            Add Pet
         </div>
       </div>
     </div>

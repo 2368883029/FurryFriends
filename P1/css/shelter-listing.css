@@ -39,8 +39,14 @@
     padding-top: 20px;
 }
 
+.content .manage-listings {
+    font-size: 30px;
+    padding-top: 20px;
+    color: var(--purple);
+}
+
 .content .card {
-    width: 40%;
+    width: 45%;
     height: auto;
     padding-bottom: 32px;
     margin-bottom: 20px;
@@ -78,6 +84,18 @@
     background-color: var(--purple);
 }
 
+.content .publish-date{
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.content .add-listing{
+    font-size: 22px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: #000000;
+}
+
 @media (max-width: 1000px) {
     .content .align-cards {
         display: block;
@@ -87,7 +105,7 @@
     }
 
     .content .card {
-        width: 70%;
+        width: 80%;
         margin: auto;
     }
 }
