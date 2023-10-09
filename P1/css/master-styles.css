@@ -97,4 +97,14 @@ a.nav-link:hover{
     color:var(--darkgrey);
 }
 
+.color-purple{                  
+    color:var(--purple);
+}
+                                
+.color-dark-grey{
+    color:var(--darkgrey);
+}
 
+.btn > span{
+    vertical-align:middle;
+}

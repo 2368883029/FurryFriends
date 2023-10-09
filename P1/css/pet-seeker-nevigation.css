@@ -1,4 +1,20 @@
+#top-navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+  background-color: #ffffff;
+}
+
+.content{
+  margin-top: 80px;
+  overflow-y: hidden;
+}
+
 .sidenav {
+    position: fixed;
+    left: 0;
+    z-index: 300;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -41,8 +57,9 @@
     flex-direction: column;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 1000px) {
     .sidenav {
+      position: relative;
       max-height: 100px;
       width: 100%;
       flex-direction: row;
@@ -73,5 +90,9 @@
     .sidenav .btn {
       width: 20%;
       justify-content: center;
+    }
+
+    .content{
+      margin-bottom: 100px;
     }
   }
