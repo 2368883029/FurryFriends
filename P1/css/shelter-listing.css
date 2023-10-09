@@ -1,0 +1,111 @@
+.content .shelterPic{
+    border-radius: 50%;
+    box-sizing: border-box;
+    height:300px;
+    width:300px;
+    overflow:hidden;
+    margin-top: 2rem;
+}
+
+.content .shelterPic > img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.content .shelter-rating + div{
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top: -20px
+}
+
+.content .shelter-rating{
+    font-size: 1rem;
+    margin-top: -10px
+}
+
+.content .checked {
+    color: orange;
+}
+
+.content .description {
+    padding-left: 30px;
+}
+
+.content .align-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.content .manage-listings {
+    font-size: 30px;
+    padding-top: 20px;
+    color: var(--purple);
+}
+
+.content .card {
+    width: 45%;
+    height: auto;
+    padding-bottom: 32px;
+    margin-bottom: 20px;
+}
+
+.content .pet-image{
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.content .pet-card-name{
+    font-size: 30px;
+    color: var(--purple);
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.content .pet-card-information{
+    font-size: 22px;
+    margin-top: -5px;
+    padding-left: 10px;
+    color: rgb(128, 128, 128);
+}
+
+.content .additional-pet-info {
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.content .btn-petdetail{
+    height: 50px;
+    width: 150px;
+    background-color: var(--purple);
+}
+
+.content .publish-date{
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.content .add-listing{
+    font-size: 22px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: #000000;
+}
+
+@media (max-width: 1000px) {
+    .content .align-cards {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .content .card {
+        width: 80%;
+        margin: auto;
+    }
+}

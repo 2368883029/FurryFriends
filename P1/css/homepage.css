@@ -1,0 +1,96 @@
+
+.content {
+    height: 600px;
+    background: url("../imgs/dog-landing.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.rectangle {
+    height: 100%;
+    max-width: 500px;
+    float: right;
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+}
+
+.rectangle h1 {
+    font-size: 36px;
+    color: #fff;
+}
+
+.rectangle p {
+    font-size: 18px;
+    color: #fff;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--purple);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: white;
+}
+
+.card {
+    background-color: rgba(60, 7, 87);
+    height: 250px; 
+    border: none; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-2x {
+    margin-bottom: 15px; 
+}
+
+.card-body i {
+    color: white;
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white; 
+}
+
+.highlight {
+    color: #ff6600;
+}
+
+.social-icon {
+    font-size: 48px;
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .social-icon:hover {
+    color: #0056b3;
+  }
+
+  .btn-card {
+    background-color: #0056b3;
+    color: white;
+  }
+
+  .social-h3 {
+    columns: var(--purple);
+  }
