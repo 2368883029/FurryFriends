@@ -82,67 +82,6 @@
     margin: 5px;
 }
 
-.notification-dropdown .offset-dropdown-menu{
-    left: -100px !important;
-}
-
-.notification-dropdown .scrollable-dropdown {
-    height: 300px;
-}
-
-.notification-dropdown .dropdown-header{
-    width: 300px;
-    position: absolute;
-    top: 0;
-    z-index: 300;
-    background-color: white;
-    padding: 0;
-    border-color: rgba(128, 128, 128, 0.438);
-    border-width: 0;
-    border-bottom-width: 1px;
-    border-style:solid;
-}
-
-.notification-dropdown .dropdown-header > button{
-    flex: 1;
-    height: 50px;
-    background-color: white;
-    border-color: var(--purple);
-    color: black;
-    border-width: 0px;
-    border-radius: 0;
-    font-size: 0.9em;
-}
-.notification-dropdown #btn-1{
-    border-bottom-width: 5px;
-}
-
-.notification-dropdown .dropdown-content{
-    margin-top: 50px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 300px;
-    height: 230px;
-    font-size: 0.6em;
-}
-
-.notification-dropdown .dropdown-content .card-body{
-    padding: 15px;
-}
-
-.notification-dropdown .dropdown-content h5{
-    font-size: 1em;
-    margin-bottom: 5px;
-}
-
-.notification-dropdown a{
-    color: black;
-}
-
-.notification-dropdown a:hover{
-    text-decoration: none;
-}
-
 
 .content .view-pet-button{
     background-color: var(--purple);
