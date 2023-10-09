@@ -8,6 +8,10 @@
     --darkgrey: #CCCCCC;
 }
 
+body {
+    width:100%;
+    position:relative;
+}
 
 /* NAVBAR STYLES */
 .logolink{
@@ -83,6 +87,22 @@ a.nav-link:hover{
 .profilePic > img {
     height:100%;
     width:100%;
+}
+
+.color-purple{
+    color:var(--purple);
+}
+
+.color-dark-grey{
+    color:var(--darkgrey);
+}
+
+.color-purple{                  
+    color:var(--purple);
+}
+                                
+.color-dark-grey{
+    color:var(--darkgrey);
 }
 
 .btn > span{
