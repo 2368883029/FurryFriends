@@ -51,6 +51,36 @@ a.nav-link:hover{
 .notif-icon-container{
     display:inline-block;
     position: relative;
+    background-color: transparent;
+}
+
+.dropdown-toggle.notif-icon-container::after{
+    display: none;
+}
+
+.notif-icon-container.dropdown-toggle:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.right-align-dropdown{
+    right: 0; 
+    left: auto;
+}
+
+.notif-dropdown .dropdown-item{
+    text-wrap:wrap;
+    width:300px;
+    padding:1rem;
+}
+
+.notif-dropdown .dropdown-item:active{
+    background-color: transparent;
+    color:black;
+}
+
+.dropdown-item.view-all-notif{
+    font-weight: 600;
 }
 
 .notif-icon{
@@ -82,6 +112,7 @@ a.nav-link:hover{
     height:45px;
     width:45px;
     overflow:hidden;
+    cursor:pointer;
 }
 
 .profilePic > img {
