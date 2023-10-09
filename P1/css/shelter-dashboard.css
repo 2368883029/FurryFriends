@@ -1,0 +1,54 @@
+.content .shelterPic{
+    border-radius: 50%;
+    box-sizing: border-box;
+    height:300px;
+    width:300px;
+    overflow:hidden;
+    margin-top: 2rem;
+}
+
+.content .shelterPic > img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.content .shelter-rating + div{
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top: -20px
+}
+
+.content .shelter-rating{
+    font-size: 1rem;
+    margin-top: -10px
+}
+
+.content .checked {
+    color: orange;
+}
+
+.content .description {
+    padding-left: 30px;
+}
+
+.content .card {
+    box-sizing: border-box;
+    width: 80%;
+    height: 148px;
+}
+
+.content .pet-image{
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .image-fit{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
