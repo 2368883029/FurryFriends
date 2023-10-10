@@ -18,130 +18,100 @@
 <body>
 
   <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand logolink" href="./homepage.html">FurryFriends</a>
-        <button
-          class="navbar-toggler"
+    <a class="navbar-brand logolink" href="./pet-search.html">FurryFriends</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./pet-search.html"
+            >Search <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./how-it-works.html"
+            >How it Works</a
+          >
+        </li>
+      </ul>
+      <div class="dropdown notification-dropdown">
+        <div
+          class="dropdown-toggle"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
           aria-expanded="false"
-          aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="../html/pet-search.html"
-                >Search <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../html/how-it-works.html"
-                >How it Works</a
-              >
-            </li>
-          </ul>
-          <div class="dropdown notification-dropdown">
-            <div
-              class="dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+          <a href="#" class="notif-icon-container mt-2 mt-lg-0">
+            <span class="material-symbols-outlined notif-icon"
+              >notifications</span
             >
-              <a href="#" class="notif-icon-container mt-2 mt-lg-0">
-                <span class="material-symbols-outlined notif-icon"
-                  >notifications</span
-                >
-                <span class="notif-badge"></span>
-              </a>
-            </div>
-            <div
-              class="dropdown-menu scrollable-dropdown offset-dropdown-menu"
-              aria-labelledby="dropdownMenuButton"
+            <span class="notif-badge"></span>
+          </a>
+        </div>
+        <div
+          class="dropdown-menu scrollable-dropdown offset-dropdown-menu"
+          aria-labelledby="dropdownMenuButton"
+        >
+          <div class="dropdown-header d-flex justify-content-between">
+            <button
+              id="btn-1"
+              class="btn btn-sm btn-light"
+              onclick="showCard('notification-set1')"
             >
-              <div class="dropdown-header d-flex justify-content-between">
-                <button
-                  id="btn-1"
-                  class="btn btn-sm btn-light"
-                  onclick="showCard('notification-set1')"
-                >
-                  Chat
-                </button>
-                <button
-                  id="btn-2"
-                  class="btn btn-sm btn-light"
-                  onclick="showCard('notification-set2')"
-                >
-                  System Notification
-                </button>
-              </div>
-              <div class="dropdown-content">
-                <div id="notification-set1">
-                  <div class="card mt-2">
-                    <a href="../html/chat-demo.html" class="card-body">
-                      <h5 class="card-title">From Toronto Pet Shleter</h5>
-                      <p class="card-text">Hi, this is a demo message</p>
-                    </a>
-                  </div>
-                  <div class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">From Anna</h5>
-                      <p class="card-text">Hi, this is Anna</p>
-                    </div>
-                  </div>
-                  <a href="../html/chat-demo.html" class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">From Toronto Pet Shleter</h5>
-                      <p class="card-text">Hi, this is a demo message</p>
-                    </div>
-                  </a>
-                  <a href="../html/chat-demo.html" class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">From Toronto Pet Shleter</h5>
-                      <p class="card-text">Hi, this is a demo message</p>
-                    </div>
-                  </div>
-                </a>
-      
-                <div id="notification-set2" style="display: none">
-                  <a href="../html/pet-seeker-payment.html" class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Renew your credit card</h5>
-                      <p class="card-text">
-                        Your Credit card was expired, please renew ASAP
-                      </p>
-                    </div>
-                  </a>
-                  <a href="../html/pet-seeker-security.html" class="card mt-2">
-                    <div class="card-body">
-                      <h5 class="card-title">Update your Email</h5>
-                      <p class="card-text">Please update your Email Address</p>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
+              Chat
+            </button>
+            <button
+              id="btn-2"
+              class="btn btn-sm btn-light"
+              onclick="showCard('notification-set2')"
+            >
+              System Notification
+            </button>
           </div>
-          <div class="vertical-rule"></div>
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <p class="text-dark font-weight-bold my-0 mr-2">John Doe</p>
-            <div class="btn-group">
-                <div type="button" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="../imgs/catPic.jpg" alt="cat pic">
+          <div class="dropdown-content">
+            <div id="notification-set1"></div>
+            
+            <div id="notification-set2" style="display: none">
+              <a href="./shelter-security.html" class="card mt-2">
+                <div class="card-body">
+                  <h5 class="card-title">Update your Email</h5>
+                  <p class="card-text">Please update your Email Address</p>
                 </div>
-                <div class="dropdown-menu right-align-dropdown">
-                    <button class="dropdown-item" type="button">View Profile</button>
-                    <button class="dropdown-item" type="button">My Pets</button>
-                    <button class="dropdown-item" type="button">Logout</button>
-                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="vertical-rule"></div>
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <p class="text-dark font-weight-bold my-0 mr-2">Toronto Animal Rescue</p>
+        <div class="btn-group">
+            <div type="button" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../imgs/shelter-house.jpg" alt="cat pic">
+            </div>
+            <div class="dropdown-menu right-align-dropdown">
+                <a href="./shelter-dashboard.html" class="dropdown-item" type="button">View Profile</a>
+                <a href="./shelter-listing.html" class="dropdown-item" type="button">My Pets</a>
+                <a href="homepage.html" class="dropdown-item" type="button">Logout</a>
             </div>
         </div>
-        </div>
+    </div>
+    </div>
   </nav>
+  
+  
+  
 
   <div class="conatainer-fluid m-3 d-flex flex-column justify-content-start align-items-start ">
       <a href="javascript:window.history.back();" class="back-button d-flex justify-content-center align-items-center flex-row"><span class="material-symbols-outlined">arrow_back</span>Back</a>
@@ -200,7 +170,7 @@
                         <textarea class="text-write" placeholder="N/A What is happening to my code and why is it happening here I demand answers now"></textarea>
                       </form>
               </div>
-              <a href="/shelter-listing">
+              <a href="./shelter-listing.html">
                 <button id="adopt-button" type="button" class="btn adopt-button" data-toggle="modal" data-target="#adoptModal">Submit</button>
               </a>
           </div>

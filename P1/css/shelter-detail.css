@@ -56,11 +56,12 @@
     padding-top: 20px;
 }
 
-.content .card {
+.content .pet-card {
     width: 40%;
     height: auto;
     padding-bottom: 32px;
     margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,.125);
 }
 
 .content .pet-image{
@@ -109,7 +110,7 @@ a:hover {
 	color: #455A64;
 }
 
-.card {
+.pet-card {
 	border-radius: 5px;
 	background-color: #fff;
 	padding-left: 60px;
@@ -192,7 +193,7 @@ a:hover {
         align-content: center;
     }
 
-    .content .card {
+    .content .pet-card {
         width: 70%;
         margin: auto;
         margin-top: 20px;
