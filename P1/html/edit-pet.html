@@ -154,15 +154,23 @@
               </form>
           </div>
           <div class="d-flex justify-content-start align-items-start flex-column ml-lg-4 details-body w-100 w-lg-50">
-              <form>
+              <form class="w-100">
                 <input type="text" class="purple-heading" placeholder="Goodest Boi">
               </form>
-              <form>
+              <form class="w-100">
                 <input type="text" class="dog-type" placeholder="Corgi">
               </form>
-                <div id ="status-pill" class="pet-status-pill status-available">Available</div>
-              <div class="d-flex flex-row justify-content-start align-items-center flex-wrap"> 
-                  <form>
+              <form class="w-100">
+                <label for="status">Status</label>
+                <select name="status" class="pet-feature">
+                    <option value="Available">Available</option>
+                    <option value="Adopted">Adopted</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Withdrawn">Withdrawn</option>
+                </select>
+                </form>
+              <div class="d-flex flex-row justify-content-start align-items-center flex-wrap w-100"> 
+                  <form class="w-100">
                     <label for="sex">Sex:</label>
                     <select name="sex" class="pet-feature">
                         <option value="Male">Male</option>
@@ -177,28 +185,28 @@
                     <input name="weight" type="number" placeholder="5.0" step="0.1" min="0" max="200" />
                   </form>
               </div>
-              <div class="my-3">
+              <div class="my-3 w-100">
                   <h5 class="color-purple m-0">Location</h6>
-                  <form>
-                    <input type="text" class="text-write" placeholder="Toronto Animal Rescue">
+                  <form class="w-100">
+                    <input type="text" class="text-write w-100" placeholder="Toronto Animal Rescue">
                   </form>
               </div>
-              <div class="my-3">
+              <div class="my-3 w-100">
                   <h5 class="color-purple m-0">Description</h6>
-                  <form>
-                    <textarea class="text-write" placeholder="Goodest Boi is a happy and friendly dog. She loves to play and really likes being around people and enjoys attention. Bath time and brushing are fine for her, but she's scared when it's nail-trimming time. Jandi also loves going for walks and spending time outside with people." rows="5"></textarea>
+                  <form class="w-100">
+                    <textarea class="text-write w-100" placeholder="Goodest Boi is a happy and friendly dog. She loves to play and really likes being around people and enjoys attention. Bath time and brushing are fine for her, but she's scared when it's nail-trimming time. Jandi also loves going for walks and spending time outside with people." rows="5"></textarea>
                   </form>
               </div>
-              <div class="my-3">
+              <div class="my-3 w-100">
                   <h5 class="color-purple m-0">Health</h6>
-                    <form>
-                        <textarea class="text-write" placeholder="Goodest Boi has no documented health issues and is up to date on all vaccinations." rows="3"></textarea>
+                    <form class="w-100">
+                        <textarea class="text-write w-100" placeholder="Goodest Boi has no documented health issues and is up to date on all vaccinations." rows="3"></textarea>
                     </form>
               </div>
-              <div class="my-3">
+              <div class="my-3 w-100">
                   <h5 class="color-purple m-0">Special Needs</h6>
-                    <form>
-                        <textarea class="text-write" placeholder="N/A What is happening to my code and why is it happening here I demand answers now"></textarea>
+                    <form class="w-100">
+                        <textarea class="text-write w-100" placeholder="N/A What is happening to my code and why is it happening here I demand answers now"></textarea>
                       </form>
               </div>
               <a href="./shelter-listing.html">
