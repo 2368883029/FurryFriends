@@ -1,0 +1,114 @@
+.content{
+    display: flex;
+    overflow: hidden;
+}
+
+.content .main-content{
+    flex-grow: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-left: calc(280px + 2em);
+    margin-right: 2em;
+}
+
+a {
+	text-decoration: none !important;
+	color: inherit;
+}
+
+a:hover {
+	color: #455A64;
+}
+
+.card {
+	border-radius: 5px;
+	background-color: #fff;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin-top: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.star-active {
+	color: #FBC02D;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.star-active:hover {
+	color: #F9A825;
+	cursor: pointer;
+}
+
+.star-inactive {
+	color: #CFD8DC;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.blue-text {
+	color: #0091EA;
+}
+
+.review {
+    margin-top: 15px;
+    margin-left: -10px;
+    margin-bottom: -10px;
+	font-size: 18px;
+}
+
+.like-button {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin-right: 8px;
+    margin-top: 5px;
+}
+
+.like-numbers {
+    margin-top: 15px;
+}
+
+.reply {
+    font-size: 17px;
+    margin-left: 15px;
+    margin-top: 15px;
+    color: var(--gray)
+}
+
+.profile-pic {
+	width: 90px;
+	height: 90px;
+	border-radius: 100%;
+	margin-right: 30px;
+}
+ 
+.pic {
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+}
+
+.vote {
+	cursor: pointer;
+}
+
+@media (max-width: 1000px){
+
+    .content #side-navbar {
+        z-index: 300;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .content .main-content {
+        width: 100%;
+        margin-left: 2em;
+    }
+}
