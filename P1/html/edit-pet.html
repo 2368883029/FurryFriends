@@ -147,7 +147,7 @@
 
   <div class="conatainer-fluid m-3 d-flex flex-column justify-content-start align-items-start ">
       <a href="javascript:window.history.back();" class="back-button d-flex justify-content-center align-items-center flex-row"><span class="material-symbols-outlined">arrow_back</span>Back</a>
-      <div class="d-flex justify-content-lg-start flex-lg-row align-items-lg-start flex-column justify-content-center align-items-center ">
+      <div class="d-flex justify-content-lg-start w-100 flex-lg-row align-items-lg-start flex-column justify-content-center align-items-center ">
           <div class="image-cont w-100 w-lg-50">
               <form>
                 <input type="file" id="medical" class="hidden" >
@@ -216,34 +216,6 @@
           </div>
       </div>
   </div>
-
-    <!-- Adopt Modal -->
-    <div class="modal fade" id="adoptModal" tabindex="-1" role="dialog" aria-labelledby="adoptModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="adoptModalLabel">Submit an Adoption Request</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body"> 
-            <form>
-              <div class="form-group">
-                <label for="adoption-email">Email address</label>
-                <input type="email" class="form-control" id="adoption-email" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              </div>
-              <div class="form-group">
-                <label for="adoption-name">Full Name</label>
-                <input type="text" class="form-control" id="adoption-name" placeholder="Full Name">
-              </div>
-              <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="submitApplication()">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 
