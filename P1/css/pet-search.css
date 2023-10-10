@@ -67,3 +67,18 @@ a.view-pet-button:hover{
     background-color: transparent;
     cursor:pointer;
 }
+
+.search-button{
+    background-color:var(--purple);
+    color:white;
+    border: 1px solid var(--purple);
+    cursor: pointer;
+}
+
+.search-bar{
+    border: 1px solid var(--purple);
+}
+
+.search-bar:focus-visible{
+    outline: none;
+}

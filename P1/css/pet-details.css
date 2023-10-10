@@ -48,3 +48,17 @@
     text-decoration: none;
 }
 
+.pet-status-pill{
+    border-radius:20px;
+    padding:5px 20px;
+    color:white;
+    margin: 5px 0px;
+}
+
+.status-available{
+    background-color:green;
+}
+
+.status-pending{
+    background-color:var(--purple);
+}
