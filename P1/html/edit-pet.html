@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
     <!-- google icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" >
     <!-- our css -->
     <link href="../css/master-styles.css" rel="stylesheet"  type="text/css">
     <link href="../css/edit-pet.css" rel="stylesheet"  type="text/css">
@@ -45,19 +45,20 @@
       </ul>
       <div class="dropdown notification-dropdown">
         <div
-        class="dropdown-toggle"
-        id="dropdownMenuButton"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        role="none"
-      >
-        <a href="#" class="notif-icon-container mt-2 mt-lg-0">
-          <span class="material-symbols-outlined notif-icon"
-            >notifications</span
-          >
-          <span class="notif-badge"></span>
-        </a>
-      </div>
+          class="dropdown-toggle"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+          role="menu"
+        >
+          <a href="#" class="notif-icon-container mt-2 mt-lg-0">
+            <span class="material-symbols-outlined notif-icon"
+              >notifications</span
+            >
+            <span class="notif-badge"></span>
+          </a>
+        </div>
         <div
           class="dropdown-menu scrollable-dropdown offset-dropdown-menu"
           aria-labelledby="dropdownMenuButton"
@@ -128,13 +129,13 @@
       <div class="d-flex flex-row justify-content-center align-items-center">
         <p class="text-dark font-weight-bold my-0 mr-2">Toronto Animal Rescue</p>
         <div class="btn-group">
-            <div type="button" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div role="menu" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="../imgs/shelter-house.jpg" alt="cat pic">
             </div>
             <div class="dropdown-menu right-align-dropdown">
-                <a href="./shelter-dashboard.html" class="dropdown-item" type="button">View Profile</a>
-                <a href="./shelter-listing.html" class="dropdown-item" type="button">My Pets</a>
-                <a href="homepage.html" class="dropdown-item" type="button">Logout</a>
+                <a href="./shelter-dashboard.html" class="dropdown-item" >View Profile</a>
+                <a href="./shelter-listing.html" class="dropdown-item" >My Pets</a>
+                <a href="homepage.html" class="dropdown-item" >Logout</a>
             </div>
         </div>
     </div>
@@ -149,7 +150,7 @@
       <div class="d-flex justify-content-lg-start flex-lg-row align-items-lg-start flex-column justify-content-center align-items-center ">
           <div class="image-cont w-100 w-lg-50">
               <form>
-                <input type="file" id="medical" class="hidden" />
+                <input type="file" id="medical" class="hidden" >
                 <label for="medical" class="file-upload"><img class="pet-image" src="../imgs/corgi-dog.jpg" alt="corgi dog"></label>
               </form>
           </div>
@@ -162,7 +163,7 @@
               </form>
               <form class="w-100">
                 <label for="status">Status</label>
-                <select name="status" class="pet-feature">
+                <select id="status" name="status" class="pet-feature">
                     <option value="Available">Available</option>
                     <option value="Adopted">Adopted</option>
                     <option value="Pending">Pending</option>
@@ -172,45 +173,45 @@
               <div class="d-flex flex-row justify-content-start align-items-center flex-wrap w-100"> 
                   <form class="w-100">
                     <label for="sex">Sex:</label>
-                    <select name="sex" class="pet-feature">
+                    <select id="sex" name="sex" class="pet-feature">
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="None">None</option>
                     </select>
                     <label for="age">Age (yr):</label>
-                    <input name="age" type="number" placeholder="1" step="1" min="0" max="20" />
+                    <input id="age" name="age" type="number" placeholder="1" step="1" min="0" max="20" >
                     <label for="length">Length (ft):</label>
-                    <input name="length" type="number" placeholder="1.0" step="0.1" min="0" max="10" />
+                    <input id="length" name="length" type="number" placeholder="1.0" step="0.1" min="0" max="10" >
                     <label for="weight">Weight (lb):</label>
-                    <input name="weight" type="number" placeholder="5.0" step="0.1" min="0" max="200" />
+                    <input id="weight" name="weight" type="number" placeholder="5.0" step="0.1" min="0" max="200" >
                   </form>
               </div>
               <div class="my-3 w-100">
-                  <h5 class="color-purple m-0">Location</h6>
+                  <h5 class="color-purple m-0">Location</h5>
                   <form class="w-100">
                     <input type="text" class="text-write w-100" placeholder="Toronto Animal Rescue">
                   </form>
               </div>
               <div class="my-3 w-100">
-                  <h5 class="color-purple m-0">Description</h6>
+                  <h5 class="color-purple m-0">Description</h5>
                   <form class="w-100">
                     <textarea class="text-write w-100" placeholder="Goodest Boi is a happy and friendly dog. She loves to play and really likes being around people and enjoys attention. Bath time and brushing are fine for her, but she's scared when it's nail-trimming time. Jandi also loves going for walks and spending time outside with people." rows="5"></textarea>
                   </form>
               </div>
               <div class="my-3 w-100">
-                  <h5 class="color-purple m-0">Health</h6>
+                  <h5 class="color-purple m-0">Health</h5>
                     <form class="w-100">
                         <textarea class="text-write w-100" placeholder="Goodest Boi has no documented health issues and is up to date on all vaccinations." rows="3"></textarea>
                     </form>
               </div>
               <div class="my-3 w-100">
-                  <h5 class="color-purple m-0">Special Needs</h6>
+                  <h5 class="color-purple m-0">Special Needs</h5>
                     <form class="w-100">
                         <textarea class="text-write w-100" placeholder="N/A What is happening to my code and why is it happening here I demand answers now"></textarea>
                       </form>
               </div>
-              <a href="./shelter-listing.html">
-                <button id="adopt-button" type="button" class="btn adopt-button" data-toggle="modal" data-target="#adoptModal">Submit</button>
+              <a href="./shelter-listing.html" class="btn adopt-button">
+                Submit
               </a>
           </div>
       </div>
