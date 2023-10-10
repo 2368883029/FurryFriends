@@ -83,19 +83,22 @@
     </div>
     <div class="content">
       <!--Main Content-->
-      <div class="back-place">
-        <a href="./shelter-listing.html" class="back-button d-flex justify-content-center align-items-center flex-row"><span class="material-symbols-outlined">arrow_back</span>Back</a>
-      </div>
       <div class="main-content">
         <div class="container">
           <input type="checkbox" id="check" />
-          <div class="login form">
+          <div class="form">
             <header>Add Pet</header>
             <form action="#">
-              <input type="text" placeholder="Enter your email" />
-              <input type="password" placeholder="Enter your password" />
-              <a href="#">Forgot password?</a>
-              <input type="button" class="button" value="Login" />
+              <input type="text" placeholder="Enter the pet's name" />
+              <input type="text" placeholder="Enter the pet's sex" />
+              <input type="number" id="weight" placeholder="Enter pet's age" step="1" min="0" max="10" />
+              <input type="number" id="weight" placeholder="Enter pet's weight" step="0.1" min="0" max="10" />
+              <input type="number" id="height" placeholder="Enter pet's height" step="0.1" min="0" max="10" />
+              <textarea id="feedback" name="feedback" class="feedback" rows="5" placeholder="Enter the pet's behaviour" required></textarea>
+              <textarea id="feedback" name="feedback" class="feedback" rows="5" placeholder="Enter the pet's medical history" required></textarea>
+              <input type="file" id="medical" class="hidden" />
+              <label for="medical" class="file-upload">Upload Pet's Image</label>
+              <a href="../html/shelter-listing.html"><input type='button' class="button" value='Submit' /></a>
             </form>
           </div>
         </div>

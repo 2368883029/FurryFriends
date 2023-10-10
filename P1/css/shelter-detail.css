@@ -1,0 +1,200 @@
+.content .shelterPic{
+    height: 520px;
+    width:100%;
+    overflow:hidden;
+    margin-top: 0.5rem;
+}
+
+.content .main-content{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+}
+
+.content .shelterPic > img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.content .heading-name{
+    font-weight: 500;
+    font-size: 2.4rem;
+    padding-top: 15px;
+}
+
+.content .shelter-rating{
+    font-size: 1.5rem;
+}
+
+.content .checked {
+    color: orange;
+}
+
+.content .address {
+    color: var(--darkgray);
+    font-size: 20px;
+}
+
+.content .phone-number {
+    color: var(--darkgray);
+    font-size: 20px;
+}
+
+.content .description {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+}
+
+.content .align-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.content .card {
+    width: 40%;
+    height: auto;
+    padding-bottom: 32px;
+    margin-bottom: 20px;
+}
+
+.content .pet-image{
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.content .pet-card-name{
+    font-size: 30px;
+    color: var(--purple);
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.content .pet-card-information{
+    font-size: 22px;
+    margin-top: -5px;
+    padding-left: 10px;
+    color: rgb(128, 128, 128);
+}
+
+.content .additional-pet-info {
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.content .btn-petdetail{
+    height: 50px;
+    width: 150px;
+    background-color: var(--purple);
+}
+
+.content .review-heading {
+    font-size: 30px;
+    padding-top: 60px;
+}
+
+a {
+	text-decoration: none !important;
+	color: inherit;
+}
+
+a:hover {
+	color: #455A64;
+}
+
+.card {
+	border-radius: 5px;
+	background-color: #fff;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin-top: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.star-active {
+	color: #FBC02D;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.star-active:hover {
+	color: #F9A825;
+	cursor: pointer;
+}
+
+.star-inactive {
+	color: #CFD8DC;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.blue-text {
+	color: #0091EA;
+}
+
+.review {
+    margin-top: 15px;
+    margin-left: -10px;
+    margin-bottom: -10px;
+	font-size: 18px;
+}
+
+.like-button {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    margin-right: 8px;
+    margin-top: 5px;
+}
+
+.like-numbers {
+    margin-top: 15px;
+}
+
+.reply {
+    font-size: 17px;
+    margin-left: 15px;
+    margin-top: 15px;
+    color: var(--gray)
+}
+
+.profile-pic {
+	width: 90px;
+	height: 90px;
+	border-radius: 100%;
+	margin-right: 30px;
+}
+ 
+.pic {
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+}
+
+.vote {
+	cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .content .align-cards {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .content .card {
+        width: 70%;
+        margin: auto;
+        margin-top: 20px;
+    }
+}

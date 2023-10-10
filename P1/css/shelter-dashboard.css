@@ -19,6 +19,15 @@
     margin-top: -20px
 }
 
+a {
+    color: var(--black);
+}
+
+a:hover{
+    text-decoration: none;
+    color: var(--black);
+}
+
 .content .shelter-rating{
     font-size: 1rem;
     margin-top: -10px

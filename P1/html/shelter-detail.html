@@ -31,17 +31,12 @@
     <link href="../css/pet-search.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
-      href="../css/pet-seeker-dashboard.css"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
       href="../css/pet-seeker-nevigation.css"
       type="text/css"
     />
     <link
       rel="stylesheet"
-      href="../css/shelter-dashboard.css"
+      href="../css/shelter-detail.css"
       type="text/css"
     />
   </head>
@@ -92,69 +87,32 @@
       </nav>
     </div>
     <div class="content">
-      <div id="side-navbar">
-        <div class="sidenav">
-          <nav class="top-group nav nav-pills">
-            <a
-              class="nav-link btn d-flex align-items-center active"
-              href="../html/shelter-dashboard.html"
-            >
-              <span class="material-symbols-outlined"> account_circle </span>
-              <span id="text">Profile</span>
-            </a>
-            <a
-              class="nav-link btn d-flex align-items-center"
-              href="../html/shelter-listing.html"
-            >
-              <span class="material-symbols-outlined"> inventory_2 </span>
-              <span id="text">Listings</span>
-            </a>
-            <a
-              class="nav-link btn d-flex align-items-center"
-              href="../html/shelter-security.html"
-            >
-              <span class="material-symbols-outlined"> passkey </span>
-              <span id="text">Login & Security</span>
-            </a>
-            <a
-              class="nav-link btn d-flex align-items-center"
-              href="../html/review-page.html"
-            >
-              <span class="material-symbols-outlined"> credit_card </span>
-              <span id="text">Reviews</span>
-            </a>
-            <hr class="opacity-75 my-1" />
-            <a class="nav-link btn d-flex align-items-center mb-2" href="#">
-              <span class="material-symbols-outlined"> help </span>
-              <span id="text">Adoption Help</span>
-            </a>
-          </nav>
-          <div class="bottom-group flex-column nav nav-pills">
-            <a class="nav-link btn d-flex align-items-center" href="#">
-              <span class="material-symbols-outlined"> logout </span>
-              <span id="text">Exit</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       <!--Main Content-->
       <div class="main-content">
-        <div class="shelterPic">
-          <img src="../imgs/shelter-house.jpg" alt="shelter pic" />
-        </div>
-        <div class="shelter-rating">
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-          <span class="fa fa-star checked"></span>
-        </div>
-        <div><a href="../html/shelter-detail.html">Toronto Animal Rescue</a></div>
-        <p class="description">
-          Located in 555 Turner Village, Toronto, Ontario, Canada. Vaughan Animal Services is dedicated to creating a 
-          safe community for pets and their owners. Services include dog and cat licensing, animal control by-law 
-          education, pick up of injured or sick dogs, cats and wildlife (as well as stray dogs), reuniting owners 
-          with lost pets and pet adoption.
-        </p>
+            <div class="shelterPic">
+                <img src="../imgs/shelter-house.jpg" alt="shelter pic" />
+            </div>
+            <div class="heading-name">Toronto Animal Rescue</div>
+            <div class="shelter-rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+            </div>
+            <div class="address">
+                555 Turner Village
+            </div>
+            <div class="phone-number">
+                (416) 491-1234
+            </div>
+            <div class="phone-number">
+                toronto.animal@mail.utoronto.ca
+            </div>
+            <p class="description">
+                Vaughan Animal Services is dedicated to creating a 
+                safe community for pets and their owners. Services include dog and cat licensing, animal control by-law 
+                education, pick up of injured or sick dogs, cats and wildlife (as well as stray dogs), reuniting owners 
+                with lost pets and pet adoption. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            </p>
         <div class="align-cards">
           <div class="card">
             <div class="pet-image">
@@ -258,6 +216,96 @@
               </a>
             </div>
           </div>
+         </div>
+         <p class="review-heading">
+            Past Reviews
+         </p>
+         <div class="card" style="width: 80%">
+            <div class="row d-flex">
+                <div class="">
+                    <img class="profile-pic" src="../imgs/happy-dog.jpg">
+                </div>
+                <div class="d-flex flex-column">
+                    <h3 class="mt-2 mb-0">Goodest Boi</h3>
+                    <div>
+                        <p class="text-left"><span class="text-muted">4.0</span>
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-inactive"></span></p>
+                    </div>
+                </div>
+                <div class="ml-auto">
+                    <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                </div>
+            </div>
+            <p class="review">If you really don't like cats, then this shelter here houses some of the most reliable dogs you'll ever see. These are soooooo adorable it makes me want to adopt them all, which is funny because I'm personally a fish person.</p>
+            <div class="row text-left mt-4">
+                <div class="like-button">
+                    <img src="../imgs/like.png" class="like-button">
+                </div>
+                <span class="like-numbers">20</span>
+                <p class="reply">Reply</p>
+            </div>
+        </div>
+        <div class="card" style="width: 80%">
+            <div class="row d-flex">
+                <div class="">
+                    <img class="profile-pic" src="../imgs/happy-dog.jpg">
+                </div>
+                <div class="d-flex flex-column">
+                    <h3 class="mt-2 mb-0">Goodest Boi</h3>
+                    <div>
+                        <p class="text-left"><span class="text-muted">4.0</span>
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-inactive"></span></p>
+                    </div>
+                </div>
+                <div class="ml-auto">
+                    <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                </div>
+            </div>
+            <p class="review">If you really don't like cats, then this shelter here houses some of the most reliable dogs you'll ever see. These are soooooo adorable it makes me want to adopt them all, which is funny because I'm personally a fish person.</p>
+            <div class="row text-left mt-4">
+                <div class="like-button">
+                    <img src="../imgs/like.png" class="like-button">
+                </div>
+                <span class="like-numbers">20</span>
+                <p class="reply">Reply</p>
+            </div>
+        </div>
+        <div class="card" style="width: 80%">
+            <div class="row d-flex">
+                <div class="">
+                    <img class="profile-pic" src="../imgs/happy-dog.jpg">
+                </div>
+                <div class="d-flex flex-column">
+                    <h3 class="mt-2 mb-0">Goodest Boi</h3>
+                    <div>
+                        <p class="text-left"><span class="text-muted">4.0</span>
+                        <span class="fa fa-star star-active ml-3"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-active"></span>
+                        <span class="fa fa-star star-inactive"></span></p>
+                    </div>
+                </div>
+                <div class="ml-auto">
+                    <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+                </div>
+            </div>
+            <p class="review">If you really don't like cats, then this shelter here houses some of the most reliable dogs you'll ever see. These are soooooo adorable it makes me want to adopt them all, which is funny because I'm personally a fish person.</p>
+            <div class="row text-left mt-4">
+                <div class="like-button">
+                    <img src="../imgs/like.png" class="like-button">
+                </div>
+                <span class="like-numbers">20</span>
+                <p class="reply">Reply</p>
+            </div>
         </div>
       </div>
     </div>
