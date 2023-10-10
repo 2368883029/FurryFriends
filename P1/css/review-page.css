@@ -23,7 +23,7 @@ a:hover {
 	color: #455A64;
 }
 
-.card {
+.main-content .card {
 	border-radius: 5px;
 	background-color: #fff;
 	padding-left: 60px;

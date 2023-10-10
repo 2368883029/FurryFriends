@@ -77,7 +77,7 @@ a.nav-link:hover{
 }
 
 .notification-dropdown .offset-dropdown-menu{
-    left: -100px !important;
+    left: -100px;
 }
 
 .notification-dropdown .scrollable-dropdown {
@@ -177,4 +177,16 @@ a.nav-link:hover{
 
 .btn > span{
     vertical-align:middle;
+}
+
+@media (max-width: 900px){
+
+    .vertical-rule {
+        display:none;
+    }
+
+    .notification-dropdown .offset-dropdown-menu{
+        left: 0; 
+        right: auto;
+    }
 }
