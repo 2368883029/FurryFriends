@@ -128,13 +128,13 @@
       <div class="d-flex flex-row justify-content-center align-items-center">
         <p class="text-dark font-weight-bold my-0 mr-2">John Doe</p>
         <div class="btn-group">
-            <div type="button" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div role="menu" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="../imgs/catPic.jpg" alt="cat pic">
             </div>
             <div class="dropdown-menu right-align-dropdown">
-                <a href="./pet-seeker-dashboard.html" class="dropdown-item" type="button">View Profile</a>
-                <a href="./pet-seeker-adoption.html" class="dropdown-item" type="button">My Pets</a>
-                <a href="homepage.html" class="dropdown-item" type="button">Logout</a>
+                <a href="./pet-seeker-dashboard.html" class="dropdown-item" >View Profile</a>
+                <a href="./pet-seeker-adoption.html" class="dropdown-item" >My Pets</a>
+                <a href="homepage.html" class="dropdown-item" >Logout</a>
             </div>
         </div>
     </div>
@@ -142,7 +142,7 @@
   </nav>
     <div class="container-fluid d-flex justify-content-between flex-row flex-wrap align-items-center pt-4">
         <div class="w-50 d-flex justify-content-start align-items-center flex-row">
-            <input type="search" class="search-bar p-1" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <input type="search" class="search-bar p-1" placeholder="Search" aria-label="Search" />
             <button type="button" class="search-button p-1" onclick="renderCards(asc=true,age=1,numCards=5)">Search</button>
         </div>
         <div class="d-flex justify-content-end flex-row align-items-center">
