@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Pet</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous">
     <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
     <!-- google icons -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
     <link 
       rel="stylesheet" 
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- our css -->
-    <link href="../css/master-styles.css" rel="stylesheet" type="text/css" />
-    <link href="../css/pet-search.css" rel="stylesheet" type="text/css" />
+    <link href="../css/master-styles.css" rel="stylesheet" type="text/css">
+    <link href="../css/pet-search.css" rel="stylesheet" type="text/css">
     <link
       rel="stylesheet"
       href="../css/add-pet.css"
-      type="text/css"
-    />
+      type="text/css">
   </head>
   <body>
     <!--nevigation-bar-->
@@ -71,6 +66,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
+              role="menu"
             >
               <a href="#" class="notif-icon-container mt-2 mt-lg-0">
                 <span class="material-symbols-outlined notif-icon"
@@ -149,13 +145,13 @@
           <div class="d-flex flex-row justify-content-center align-items-center">
             <p class="text-dark font-weight-bold my-0 mr-2">Toronto Animal Rescue</p>
             <div class="btn-group">
-                <div type="button" class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown-toggle profilePic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu">
                     <img src="../imgs/shelter-house.jpg" alt="cat pic">
                 </div>
                 <div class="dropdown-menu right-align-dropdown">
-                    <a href="./shelter-dashboard.html" class="dropdown-item" type="button">View Profile</a>
-                    <a href="./shelter-listing.html" class="dropdown-item" type="button">My Pets</a>
-                    <a href="homepage.html" class="dropdown-item" type="button">Logout</a>
+                    <a href="./shelter-dashboard.html" class="dropdown-item" >View Profile</a>
+                    <a href="./shelter-listing.html" class="dropdown-item" >My Pets</a>
+                    <a href="homepage.html" class="dropdown-item">Logout</a>
                 </div>
             </div>
         </div>
@@ -169,20 +165,20 @@
       <!--Main Content-->
       <div class="main-content">
         <div class="container">
-          <input type="checkbox" id="check" />
+          <input type="checkbox" id="check">
           <div class="form">
             <header>Add Pet</header>
             <form action="#">
-              <input type="text" placeholder="Enter the pet's name" />
-              <input type="text" placeholder="Enter the pet's sex" />
-              <input type="number" id="weight" placeholder="Enter pet's age" step="1" min="0" max="10" />
-              <input type="number" id="weight" placeholder="Enter pet's weight" step="0.1" min="0" max="10" />
-              <input type="number" id="height" placeholder="Enter pet's height" step="0.1" min="0" max="10" />
-              <textarea id="feedback" name="feedback" class="feedback" rows="5" placeholder="Enter the pet's behaviour" required></textarea>
+              <input type="text" placeholder="Enter the pet's name">
+              <input type="text" placeholder="Enter the pet's sex">
+              <input type="number" id="age" placeholder="Enter pet's age" step="1" min="0" max="10">
+              <input type="number" id="weight" placeholder="Enter pet's weight" step="0.1" min="0" max="10">
+              <input type="number" id="height" placeholder="Enter pet's height" step="0.1" min="0" max="10">
+              <textarea id="feedback-behav" name="feedback" class="feedback" rows="5" placeholder="Enter the pet's behaviour" required></textarea>
               <textarea id="feedback" name="feedback" class="feedback" rows="5" placeholder="Enter the pet's medical history" required></textarea>
-              <input type="file" id="medical" class="hidden" />
+              <input type="file" id="medical" class="hidden" >
               <label for="medical" class="file-upload">Upload Pet's Image</label>
-              <a href="../html/shelter-listing.html"><input type='button' class="button" value='Submit' /></a>
+              <input onclick="window.location.href='./shelter-listing.html'" type='button' class="button" value='Submit'>
             </form>
           </div>
         </div>
