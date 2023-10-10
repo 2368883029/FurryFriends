@@ -67,7 +67,7 @@
     width: 150px;
     background-color: var(--purple);
 }
-.content #pet-type{
+.content .pet-type{
     color: rgb(128, 128, 128);
     font-weight: bold;
     font-size: 1em;

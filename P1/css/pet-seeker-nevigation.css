@@ -74,7 +74,7 @@
 
     .sidenav .bottom-group,
     .sidenav hr,
-    .sidenav #text {
+    .sidenav .text {
       display: none;
     }
 
