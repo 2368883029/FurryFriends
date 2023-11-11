@@ -1,25 +1,24 @@
+from django.shortcuts import get_object_or_404
 from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, RetrieveAPIView
 from .models import Notifications
 from .serializers import NotificationSerializer
+from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
-from django.contrib.auth.mixins import LoginRequiredMixin
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import ModelViewSet
+from rest_framework import status
+
 
 class NotificationCreateView(CreateAPIView):
     serializer_class = NotificationSerializer
-
-    def perform_create(self, serializer):
-        current_user = self.request.user
-
-        # Check if the user is authenticated
-        if current_user.is_anonymous:
-            raise PermissionDenied(detail='Please login')
-        return super().perform_create(self, serializer)
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Notifications.objects.all()
     
 class NotificationListView(ListAPIView):
     serializer_class = NotificationSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         current_user = self.request.user
@@ -29,11 +28,6 @@ class NotificationListView(ListAPIView):
         start = (page - 1) * page_size
         end = page * page_size
 
-        # Check if the user is authenticated
-        if current_user.is_anonymous:
-            raise PermissionDenied(detail='Please login')
-
-        print(read)
 
         if read == None or read == 0:
             is_read = False
@@ -42,20 +36,28 @@ class NotificationListView(ListAPIView):
 
         return Notifications.objects.filter(read=is_read).filter(owner=current_user)[start:end]
         
-    
-class NotificationDeleteView(DestroyAPIView):
-    serializer_class = NotificationSerializer
-    
-    def perform_destroy(self, instance):
-        current_user = self.request.user
 
-        # Check if the user is authenticated
-        if current_user.is_anonymous:
-            raise PermissionDenied(detail='Please login')
-        
-        # Check if current user has the target 
-        
-        return super().perform_destroy(instance)
-
-class NotificationRetrieveView(RetrieveAPIView):
+class NotificationManageViewSet(ModelViewSet):
     serializer_class = NotificationSerializer
+    permission_classes = [IsAuthenticated]
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+    
+        if instance.owner != request.user:
+            return PermissionDenied('No permission')
+        
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+
+        if instance.owner != request.user:
+            return PermissionDenied('No permission')
+        
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def get_queryset(self):
+        return Notifications.objects.all() 
