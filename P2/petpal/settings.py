@@ -42,9 +42,10 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'notifications',
     'comments',
-    'accounts'
+    'accounts',
 ]
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from accounts.models import Account
 
 class Notifications(models.Model):
     TYPES = (
@@ -10,7 +11,7 @@ class Notifications(models.Model):
         ('status_update', 'Status update')
     )
 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Account, on_delete=models.CASCADE)
     creation_time = models.DateTimeField(auto_now_add=True)
     message = models.TextField(max_length=512)
     read = models.BooleanField(default=False)
