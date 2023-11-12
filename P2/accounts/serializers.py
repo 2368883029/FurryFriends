@@ -12,8 +12,8 @@ class CreateAccountSerializer(serializers.ModelSerializer):
 
 class AccountSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-
+    isShelter = serializers.BooleanField(read_only=True)
     class Meta:
         model = Account
-        fields = ["id", "username", "email", "first_name", 'last_name','location','phone_number','isShelter']
+        fields = ["id", "username", "email", "first_name", 'last_name','location','phone_number','isShelter', 'avatar']
         

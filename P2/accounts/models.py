@@ -16,3 +16,4 @@ class Account(AbstractUser):
     location = models.CharField(max_length = 256)
     phone_number = models.CharField(validators=[phone_regex], max_length=11) 
     isShelter = models.BooleanField(default=False) # default register as Pet Seeker
+    avatar = models.ImageField(default='blank-profile.png', upload_to='media')

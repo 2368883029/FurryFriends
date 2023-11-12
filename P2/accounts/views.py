@@ -14,7 +14,7 @@ class AccountCreateView(CreateAPIView):
     permission_classes = [AllowAny]
 
     def perform_create(self,serializer):
-        password1 = serializer.validated_data.pop('password1')
+        password1 = serializer.validated_data.pop('password1') 
         password2 = serializer.validated_data.pop('password2')
 
         if not password1 or not password2 or not (password1 == password2):
@@ -26,6 +26,14 @@ class AccountCreateView(CreateAPIView):
                                               location = '',
                                               phone_number = '')
         
+
+class AccountListView(ListAPIView):
+    serializer_class = AccountSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Account.objects.all().filter(isShelter = True)
+
 class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     serializer_class = AccountSerializer
     permission_classes = [IsAuthenticated]
@@ -33,7 +41,6 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-
         # shelter needs to have an open application with the user to view the user
         # if shelter, then anyone can view
         if not instance.isShelter:
@@ -41,6 +48,7 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
                 #TODO
                 pass
             elif request.user.id != instance.id: # cannot get profile of another user
+                
                 return Response(status=status.HTTP_401_UNAUTHORIZED)
 
         serializer = self.get_serializer(instance)
@@ -53,7 +61,6 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
         # owner check
         if request.user.id != pk:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-
 
         return super().update(request, *args, **kwargs)
     
