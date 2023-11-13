@@ -12,6 +12,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.functions import Now
+from rest_framework import status
 
 # Create your views here.
 class CommentManageViewSet(ModelViewSet):
@@ -22,6 +23,8 @@ class CommentManageViewSet(ModelViewSet):
         object_id = serializer.validated_data.get('object_id')
         content_type = serializer.validated_data.get('content_type')
         if content_type == 'applications':
+            if Applications.objects.filter(id=object_id).first() == None:
+                    raise ValidationError("Target application can not be found")
             target_application = Applications.objects.get(id=object_id)
             if target_application.pet.shelter != self.request.user and target_application.applicant != self.request.user:
                 raise PermissionDenied(detail="You don't have permission to leave comment under this applicaton")
@@ -51,19 +54,19 @@ class CommentManageViewSet(ModelViewSet):
             for_shelter = int(request.query_params.get('for_shelter', 1))
 
         except ValueError:
-            raise ValidationError("Invalid input. All inputs must be integers")
+            return Response({"Invalid input. All inputs must be integers"}, status=status.HTTP_400_BAD_REQUEST)
 
         if sort not in [0, 1]:
-            raise ValidationError("Invalid value for 'sort'.")
+            return Response({"Invalid value for 'sort'."}, status=status.HTTP_400_BAD_REQUEST)
 
         if page < 1:
-            raise ValidationError("Page number must be a positive integer.")
+            return Response({"Page number must be a positive integer."}, status=status.HTTP_400_BAD_REQUEST)
         
         if object_id < 0:
-            raise ValidationError("Invalid value for 'object_id'.")
+            return Response({"Invalid value for 'object_id'."}, status=status.HTTP_400_BAD_REQUEST)
         
         if for_shelter not in [0, 1]:
-            raise ValidationError("Invalid value for 'for_shelter'.")
+            return Response({"Invalid value for 'for_shelter'."}, status=status.HTTP_400_BAD_REQUEST)
         
         page_size = 10
         start = (page - 1) * page_size
@@ -76,11 +79,14 @@ class CommentManageViewSet(ModelViewSet):
             list_ordered = list_ordered.order_by('creation_time')
 
         if for_shelter:
-            # check if the user is a shelter:
-            if Account.objects.get(id=object_id).isShelter == False:
-                raise ValidationError("Target Account is not a Shelter")
+            if Account.objects.filter(id=object_id).first() == None:
+                return Response({"Can not find target shelter in database"}, status=status.HTTP_400_BAD_REQUEST)
+            if not Account.objects.get(id=object_id).isShelter:
+                return Response({"Target User is not a shelter"}, status=status.HTTP_400_BAD_REQUEST)
             account_content_type = ContentType.objects.get_for_model(Account)
         else:
+            if Applications.objects.filter(id=object_id).first() == None:
+                return Response({"Can not find target application"}, status=status.HTTP_400_BAD_REQUEST)
             target_application = Applications.objects.get(id=object_id)
             if target_application.pet.shelter != self.request.user and target_application.applicant != self.request.user:
                 raise PermissionDenied(detail="You don't have permission to see comment under this applicaton")
