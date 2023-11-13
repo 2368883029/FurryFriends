@@ -32,5 +32,6 @@ urlpatterns = [
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('notifications/', include('notifications.urls'), name='notifications'),
     path('accounts/', include('accounts.urls'), name='accounts'),
+    path('comments/', include('comments.urls'), name='comments'),
     path('listings/', include('listings.urls'), name='listings')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
