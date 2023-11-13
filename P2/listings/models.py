@@ -22,6 +22,7 @@ class Pet(models.Model):
     description = models.TextField()
     medical_history = models.TextField(blank=True, null=True)
     other_notes = models.TextField(blank=True, null=True)
+    avatar = models.ImageField(default='blank-profile.png', upload_to='media-pet')
     shelter = models.ForeignKey(Account, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
