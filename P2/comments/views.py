@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.exceptions import PermissionDenied
 from django.contrib.contenttypes.models import ContentType
+from django.db.models.functions import Now
 
 # Create your views here.
 class CommentManageViewSet(ModelViewSet):
@@ -24,6 +25,8 @@ class CommentManageViewSet(ModelViewSet):
             target_application = Applications.objects.get(id=object_id)
             if target_application.pet.shelter != self.request.user and target_application.applicant != self.request.user:
                 raise PermissionDenied(detail="You don't have permission to leave comment under this applicaton")
+            target_application.last_update_time = Now()
+            target_application.save()
             
         comment = serializer.save(from_user=self.request.user)
         

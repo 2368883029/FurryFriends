@@ -3,20 +3,28 @@ from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import AllowAny,IsAuthenticated
 from .models import Applications
-from rest_framework.pagination import PageNumberPagination
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
-
+from .paginators import CustomPagination
 
 # Create your views here.
-# class AppplicationListView(ListAPIView):
-#     serializer_class = ApplicationSerializer
-#     permission_classes = [IsAuthenticated]
-#     pagination_class = PageNumberPagination
-#     def get_queryset(self):
-#         page = int(self.request.query_params.get('page', 1))
-#         return Applications.objects.all()
+class AppplicationListView(ListAPIView):
+    serializer_class = ApplicationSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = CustomPagination
+
+    def get_queryset(self):
+        if self.request.user.isShelter:
+            apps = Applications.objects.filter(pet__shelter = self.request.user)
+        else:
+            apps = Applications.objects.filter(applicant = self.request.user)
+        
+        wanted_status = self.kwargs.get('status')
+        apps.filter(status = wanted_status)
+        apps.order_by('creation_time','last_update_time')
+        return apps
+
 
 
 class ApplicationCreateView(CreateAPIView):
