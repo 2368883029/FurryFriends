@@ -3,7 +3,7 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('', views.NotificationManageViewSet, basename='notifications')
+router.register('', views.NotificationManageViewSet, basename='comments')
 
 urlpatterns = [
     path('', include(router.urls)),
