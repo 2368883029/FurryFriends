@@ -49,16 +49,16 @@ class NotificationManageViewSet(ModelViewSet):
             read = int(request.query_params.get('read', 0))
             page = int(request.query_params.get('page', 1))
         except ValueError:
-            raise ValidationError("Invalid input. Parameters 'sort', 'read', and 'page' must be integers.")
+            return Response({"Invalid Input, all parameters must be integers."}, status=status.HTTP_400_BAD_REQUEST)
 
         if sort not in [0, 1]:
-            raise ValidationError("Invalid value for 'sort'.")
+            return Response({"Invalid value for 'sort'."}, status=status.HTTP_400_BAD_REQUEST)
 
         if read not in [0, 1]:
-            raise ValidationError("Invalid value for 'read'.")
+            return Response({"Invalid value for 'read'."}, status=status.HTTP_400_BAD_REQUEST)
 
         if page < 1:
-            raise ValidationError("Page number must be a positive integer.")
+            return Response({"Invalid value for 'page'."}, status=status.HTTP_400_BAD_REQUEST)
         current_user = request.user
         page_size = 10
         start = (page - 1) * page_size

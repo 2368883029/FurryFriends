@@ -33,9 +33,10 @@ class CommentsSerializer(serializers.ModelSerializer):
             
         if content_type.lower() == 'user':
             content_type = ContentType.objects.get_for_model(Account)
-            # check if the user is a shelter:
+            if Account.objects.filter(id=object_id).first() == None:
+                raise serializers.ValidationError('Target Account can not be found')
             if Account.objects.get(id=object_id).isShelter == False:
-                raise ValidationError("Target Account is not a Shelter")
+                raise serializers.ValidationError("Target Account is not a Shelter")
         elif content_type.lower() == 'applications':
             content_type = ContentType.objects.get_for_model(Applications)
         else:
