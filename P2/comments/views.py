@@ -13,14 +13,14 @@ from rest_framework.exceptions import PermissionDenied
 from django.contrib.contenttypes.models import ContentType
 
 # Create your views here.
-class NotificationManageViewSet(ModelViewSet):
+class CommentManageViewSet(ModelViewSet):
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         object_id = serializer.validated_data.get('object_id')
         content_type = serializer.validated_data.get('content_type')
-        if content_type == 'application':
+        if content_type == 'applications':
             target_application = Applications.objects.get(id=object_id)
             if target_application.pet.shelter != self.request.user and target_application.applicant != self.request.user:
                 raise PermissionDenied(detail="You don't have permission to leave comment under this applicaton")
