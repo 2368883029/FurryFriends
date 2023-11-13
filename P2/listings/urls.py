@@ -8,6 +8,6 @@ urlpatterns = [
         views.PetRetrieveUpdateDestroyAPIView.as_view(),
         name="pet-retrieve-update-destroy",
     ),
-    path("search/", views.PetListView.as_view(), name="pet-search"),
-    path("create/", views.PetCreateView.as_view(), name="pet-create"),
+    path("all/", views.PetListView.as_view(), name="pet-search"),
+    path("", views.PetCreateView.as_view(), name="pet-create"),
 ]
