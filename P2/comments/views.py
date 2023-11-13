@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.forms import ValidationError
 from django.shortcuts import get_object_or_404
 from accounts.models import Account
+from notifications.models import Notifications
 from .models import Comment
 from .serializers import CommentsSerializer
 from rest_framework.response import Response
@@ -14,9 +15,24 @@ from django.contrib.contenttypes.models import ContentType
 class NotificationManageViewSet(ModelViewSet):
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticated]
-    
+
     def perform_create(self, serializer):
-        serializer.save(from_user=self.request.user)
+        object_id = serializer.validated_data.get('object_id')
+        content_type = serializer.validated_data.get('content_type')
+
+        # if content_type == 'user' and Account.objects.get(id=object_id).isShelter and object_id != self.request.user.id:
+        #     raise ValidationError('Shelter can not leave comment under another shelter')
+        # TODO: Add Validation
+        comment = serializer.save(from_user=self.request.user)
+        
+        create_notifications(
+            target_type = content_type,
+            target_id = object_id,
+            content_object=comment, 
+            message=f"New comment by {self.request.user.username}",
+            type='new_comment',
+            action_link=f'/comments/{comment.id}'
+        )
 
     def get_queryset(self):
         return Comment.objects.all() 
@@ -59,6 +75,7 @@ class NotificationManageViewSet(ModelViewSet):
                 raise ValidationError("Target Account is not a Shelter")
             account_content_type = ContentType.objects.get_for_model(Account)
         else:
+            # TODO: Add Validation
             account_content_type = ContentType.objects.get_for_model(Account)
         #     account_content_type = ContentType.objects.get_for_model(Application)
         list_ordered = list_ordered.filter(content_type=account_content_type, object_id=object_id)
@@ -66,3 +83,24 @@ class NotificationManageViewSet(ModelViewSet):
         serializer = self.get_serializer(list_info, many=True)
 
         return Response(serializer.data)
+
+def create_notifications(target_id, target_type, content_object, message, type, action_link):
+    content_type = ContentType.objects.get_for_model(Comment)
+    object_id = content_object.id
+
+    # If leave comment under Shelter
+    if target_type == 'user':
+        user_to_notify = Account.objects.get(id=target_id)
+    # else if leave comment under application
+    # TODO: Finish this
+    else:
+        user_to_notify = Account.objects.get(id=target_id)
+
+    Notifications.objects.create(
+        owner=user_to_notify,
+        message=message,
+        type=type,
+        action_link=action_link,
+        content_type=content_type,
+        object_id=object_id
+    )
