@@ -1,3 +1,4 @@
+from notifications.models import Notifications
 from .serializers import *
 from django.shortcuts import render
 from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateAPIView
@@ -6,6 +7,8 @@ from .models import Applications
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.contenttypes.models import ContentType
+
 from .paginators import CustomPagination
 
 # Create your views here.
@@ -54,7 +57,16 @@ class ApplicationCreateView(CreateAPIView):
         return super().create(request, *args, **kwargs)
     
     def perform_create(self, serializer):
-        serializer.save(applicant = self.request.user)
+        application = serializer.save(applicant = self.request.user)
+
+        # Create a notification
+        create_notifications(
+            users = [serializer.validated_data.get('pet').shelter],
+            content_object=application, 
+            message=f"New applicaiton by {self.request.user.username}",
+            type='new_application',
+            action_link=f'/applications/{application.id}',
+        )
 
 
 class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
@@ -91,7 +103,19 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 return Response(f"You cannot update the status to {wanted_status}",status=status.HTTP_400_BAD_REQUEST)
             
 
-        return super().update(request, *args, **kwargs)
+        response = super().update(request, *args, **kwargs)
+
+        # Create notifications
+        if response.status_code == status.HTTP_200_OK:
+            create_notifications(
+                users=[instance.applicant],
+                content_object=instance,
+                message=f"Application status updated for pet {instance.pet.name}",
+                type='status_update',
+                action_link=f'/applications/{instance.id}'
+            )
+
+        return response
     
     def partial_update(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -114,3 +138,17 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
             if (wanted_status != 'withdrawn'):
                 return Response(f"You cannot update the status to {wanted_status}",status=status.HTTP_400_BAD_REQUEST)
         return super().partial_update(request, *args, **kwargs)
+    
+# Create the Notification to target_user
+def create_notifications(users, content_object, message, type, action_link):
+    content_type = ContentType.objects.get_for_model(Applications)
+
+    for target_user in users:
+        Notifications.objects.create(
+            owner = target_user,
+            message=message,
+            type=type,
+            action_link=action_link,
+            content_type=content_type,
+            object_id=content_object.id
+        )

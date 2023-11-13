@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from rest_framework.generics import (
     CreateAPIView,
-    RetrieveDestroyAPIView,
-    RetrieveUpdateAPIView,
     ListAPIView,
-    RetrieveAPIView,
+    RetrieveUpdateDestroyAPIView,
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
@@ -13,12 +11,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from .serializers import PetSerializer
 from .models import Pet
-
-
-class PetRetrieveView(RetrieveAPIView):
-    queryset = Pet.objects.all()
-    serializer_class = PetSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class PetCreateView(CreateAPIView):
@@ -36,51 +28,6 @@ class PetCreateView(CreateAPIView):
                 {"detail": "The user is not a shelter."},
                 status=status.HTTP_403_FORBIDDEN,
             )
-
-
-class PetDeleteView(RetrieveDestroyAPIView):
-    queryset = Pet.objects.all()
-    serializer_class = PetSerializer
-    permission_classes = [IsAuthenticated]
-
-    def delete(self, request, *args, **kwargs):
-        user = self.request.user
-        if not user.isShelter:
-            return Response(
-                {"detail": "The user is not a shelter."},
-                status=status.HTTP_403_FORBIDDEN,
-            )
-
-        pet = self.get_object()
-        if pet.shelter != user:
-            return Response(
-                {"detail": "The pet does not belong to the shelter."},
-                status=status.HTTP_403_FORBIDDEN,
-            )
-
-        return super().delete(request, *args, **kwargs)
-
-
-class PetUpdateView(RetrieveUpdateAPIView):
-    queryset = Pet.objects.all()
-    serializer_class = PetSerializer
-
-    def put(self, request, *args, **kwargs):
-        user = self.request.user
-        if not user.isShelter:
-            return Response(
-                {"detail": "The user is not a shelter."},
-                status=status.HTTP_403_FORBIDDEN,
-            )
-
-        pet = self.get_object()
-        if pet.shelter != user:
-            return Response(
-                {"detail": "The pet does not belong to the shelter."},
-                status=status.HTTP_403_FORBIDDEN,
-            )
-
-        return super().put(request, *args, **kwargs)
 
 
 class PetListView(ListAPIView):
@@ -110,3 +57,43 @@ class PetListView(ListAPIView):
             queryset = queryset.filter(status=status)
 
         return queryset
+
+
+class PetRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+    queryset = Pet.objects.all()
+    serializer_class = PetSerializer
+    permission_classes = [IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        user = self.request.user
+        if not user.isShelter:
+            return Response(
+                {"detail": "The user is not a shelter."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        pet = self.get_object()
+        if pet.shelter != user:
+            return Response(
+                {"detail": "The pet does not belong to the shelter."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        return super().put(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        user = self.request.user
+        if not user.isShelter:
+            return Response(
+                {"detail": "The user is not a shelter."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        pet = self.get_object()
+        if pet.shelter != user:
+            return Response(
+                {"detail": "The pet does not belong to the shelter."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
+        return super().delete(request, *args, **kwargs)
