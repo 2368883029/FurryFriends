@@ -7,4 +7,5 @@ urlpatterns = [
     path("search/", views.PetListView.as_view(), name="pet-search"),
     path("create/", views.PetCreateView.as_view(), name="pet-create"),
     path("<int:pk>/delete/", views.PetDeleteView.as_view(), name="pet-delete"),
+    path("<int:pk>/update/", views.PetUpdateView.as_view(), name="pet-update"),
 ]

@@ -50,14 +50,14 @@ class PetDeleteView(RetrieveDestroyAPIView):
                 {"detail": "The user is not a shelter."},
                 status=status.HTTP_403_FORBIDDEN,
             )
-        
+
         pet = self.get_object()
         if pet.shelter != user:
             return Response(
                 {"detail": "The pet does not belong to the shelter."},
                 status=status.HTTP_403_FORBIDDEN,
             )
-            
+
         return super().delete(request, *args, **kwargs)
 
 
@@ -72,7 +72,7 @@ class PetUpdateView(RetrieveUpdateAPIView):
                 {"detail": "The user is not a shelter."},
                 status=status.HTTP_403_FORBIDDEN,
             )
-        
+
         pet = self.get_object()
         if pet.shelter != user:
             return Response(
@@ -88,21 +88,21 @@ class PetListView(ListAPIView):
     serializer_class = PetSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['name', 'breed', 'color', 'sex']
-    ordering_fields = ['name', 'age', 'size']
-    ordering = 'name'
-    
+    search_fields = ["name", "breed", "color", "sex"]
+    ordering_fields = ["name", "age", "size"]
+    ordering = "name"
+
     class PetPagination(PageNumberPagination):
         page_size = 10
-        page_size_query_param = 'page_size'
+        page_size_query_param = "page_size"
         max_page_size = 100
-        
+
     pagination_class = PetPagination
 
     def get_queryset(self):
         queryset = Pet.objects.all()
-        shelter_id = self.request.query_params.get('shelter_id', None)
-        status = self.request.query_params.get('status', 'available')
+        shelter_id = self.request.query_params.get("shelter_id", None)
+        status = self.request.query_params.get("status", "available")
 
         if shelter_id:
             queryset = queryset.filter(shelter__id=shelter_id)
@@ -110,6 +110,3 @@ class PetListView(ListAPIView):
             queryset = queryset.filter(status=status)
 
         return queryset
-
-
-
