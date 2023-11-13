@@ -1,10 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import (
     CreateAPIView,
-    RetrieveDestroyAPIView,
-    RetrieveUpdateAPIView,
     ListAPIView,
-    RetrieveAPIView,
     RetrieveUpdateDestroyAPIView,
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
