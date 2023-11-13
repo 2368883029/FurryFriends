@@ -33,7 +33,7 @@ class PetCreateView(CreateAPIView):
             serializer.save(shelter=user)
         else:
             return Response(
-                {"detail": "You do not have permission to add a pet."},
+                {"detail": "The user is not a shelter."},
                 status=status.HTTP_403_FORBIDDEN,
             )
 
