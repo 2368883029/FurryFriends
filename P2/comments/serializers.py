@@ -1,5 +1,7 @@
 from django.forms import ValidationError
 from rest_framework import serializers
+
+from applications.models import Applications
 from .models import Comment
 from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
@@ -34,8 +36,8 @@ class CommentsSerializer(serializers.ModelSerializer):
             # check if the user is a shelter:
             if Account.objects.get(id=object_id).isShelter == False:
                 raise ValidationError("Target Account is not a Shelter")
-        # elif target_type.lower() == 'application':
-            # content_type = ContentType.objects.get_for_model(Application)
+        elif content_type.lower() == 'applications':
+            content_type = ContentType.objects.get_for_model(Applications)
         else:
             raise serializers.ValidationError({"type": "Invalid type"})
             
