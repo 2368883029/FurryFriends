@@ -40,18 +40,20 @@ class ApplicationCreateView(CreateAPIView):
         listing_id = data['pet']
         if request.user.isShelter:
             return Response("Shelters cannot create adoption applications.",status=status.HTTP_403_FORBIDDEN)
+        
         if not listing_id:
             return Response("Request needs to provide a pet listing id",status=status.HTTP_400_BAD_REQUEST)
         
-        pet_obj = Pet.objects.filter(id=listing_id).first()
+        pet_obj = Pet.objects.filter(pk=listing_id).first()
+
         if not pet_obj:
             return Response("invalid pet id",status=status.HTTP_400_BAD_REQUEST)
         
         if pet_obj.status != 'available':
             return Response("You cannot submit an application for this pet, it is unavailable.",status=status.HTTP_403_FORBIDDEN)
         
-        # check for existing applications
-        if Applications.objects.filter(id = listing_id).filter(applicant = request.user).first():
+        # check for existing applications 
+        if Applications.objects.filter(pet__pk=listing_id).filter(applicant=self.request.user).first():
             return Response("You have already submitted an application for this pet.",status=status.HTTP_403_FORBIDDEN)
         
         return super().create(request, *args, **kwargs)
