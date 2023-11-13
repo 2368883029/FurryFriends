@@ -4,4 +4,5 @@ from . import views
 app_name = "applications"
 urlpatterns = [
     path("",views.ApplicationCreateView.as_view(),name='create-application'),
+    path("<int:pk>/",views.ApplicationRetrieveUpdateView.as_view(),name='retrieve-update-application'),
 ]

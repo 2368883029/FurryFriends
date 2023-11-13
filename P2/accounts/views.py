@@ -7,7 +7,7 @@ from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import status
-
+from applications.models import Applications
 
 # Create your views here.
 class AccountCreateView(CreateAPIView):
@@ -23,9 +23,7 @@ class AccountCreateView(CreateAPIView):
             raise ValidationError("Passwords do not match.") 
         
         Account.objects.create_user(**serializer.validated_data,  
-                                              password=password1,
-                                              location = '',
-                                              phone_number = '')
+                                              password=password1)
         
 class AccountListView(ListAPIView):
     serializer_class = AccountSerializer
@@ -45,11 +43,11 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
         # if shelter, then anyone can view
         if not instance.isShelter:
             if request.user.isShelter:
-                #TODO
-                pass
+                open_apps = Applications.objects.filter(applicant = instance).filter(pet__shelter = request.user).first()
+                if not open_apps:
+                    return Response("You do not have any applications submitted by this account.",status=status.HTTP_403_FORBIDDEN)
             elif request.user.id != instance.id: # cannot get profile of another user
-                
-                return Response(status=status.HTTP_401_UNAUTHORIZED)
+                return Response(status=status.HTTP_403_FORBIDDEN)
 
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
@@ -60,7 +58,7 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
         
         # owner check
         if request.user.id != pk:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_403_FORBIDDEN)
 
         return super().update(request, *args, **kwargs)
     
@@ -70,7 +68,7 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 
         # owner check
         if request.user.id != pk:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_403_FORBIDDEN)
         
         return super().partial_update(request, *args, **kwargs)
 
@@ -79,7 +77,7 @@ class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 
         # owner check
         if request.user.id != pk:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+            return Response(status=status.HTTP_403_FORBIDDEN)
         
         return super().destroy(request, *args, **kwargs)
     
