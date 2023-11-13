@@ -6,6 +6,7 @@ from rest_framework.generics import (
     ListAPIView,
     RetrieveAPIView,
 )
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -15,16 +16,16 @@ from .models import Pet
 
 
 class PetRetrieveView(RetrieveAPIView):
-    queryset = Pet.objects.all()    
+    queryset = Pet.objects.all()
     serializer_class = PetSerializer
-    
+    permission_classes = [IsAuthenticated]
 
 
 class PetCreateView(CreateAPIView):
     serializer_class = PetSerializer
     queryset = Pet.objects.all()
     permission_classes = [IsAuthenticated]
-    
+
     def perform_create(self, serializer):
         user = self.request.user
 
@@ -32,8 +33,8 @@ class PetCreateView(CreateAPIView):
             serializer.save(shelter=user)
         else:
             return Response(
-                {'detail': 'You do not have permission to add a pet.'},
-                status=status.HTTP_403_FORBIDDEN
+                {"detail": "You do not have permission to add a pet."},
+                status=status.HTTP_403_FORBIDDEN,
             )
 
 
@@ -41,42 +42,74 @@ class PetDeleteView(RetrieveDestroyAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
     permission_classes = [IsAuthenticated]
-    
+
     def delete(self, request, *args, **kwargs):
         user = self.request.user
-        if not user.isShleter:
+        if not user.isShelter:
             return Response(
-                {'detail': 'You do not have permission to delete this pet.'},
-                status=status.HTTP_403_FORBIDDEN
+                {"detail": "The user is not a shelter."},
+                status=status.HTTP_403_FORBIDDEN,
             )
+        
+        pet = self.get_object()
+        if pet.shelter != user:
+            return Response(
+                {"detail": "The pet does not belong to the shelter."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+            
         return super().delete(request, *args, **kwargs)
 
 
 class PetUpdateView(RetrieveUpdateAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
-    
+
     def put(self, request, *args, **kwargs):
         user = self.request.user
-        if not user.isShleter:
+        if not user.isShelter:
             return Response(
-                {'detail': 'You do not have permission to update this pet.'},
-                status=status.HTTP_403_FORBIDDEN
+                {"detail": "The user is not a shelter."},
+                status=status.HTTP_403_FORBIDDEN,
             )
-            
+        
+        pet = self.get_object()
+        if pet.shelter != user:
+            return Response(
+                {"detail": "The pet does not belong to the shelter."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+
         return super().put(request, *args, **kwargs)
 
 
 class PetListView(ListAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'breed', 'color', 'sex']
+    ordering_fields = ['name', 'age', 'size']
+    ordering = 'name'
+    
+    class PetPagination(PageNumberPagination):
+        page_size = 10
+        page_size_query_param = 'page_size'
+        max_page_size = 100
+        
+    pagination_class = PetPagination
+
+    def get_queryset(self):
+        queryset = Pet.objects.all()
+        shelter_id = self.request.query_params.get('shelter_id', None)
+        status = self.request.query_params.get('status', 'available')
+
+        if shelter_id:
+            queryset = queryset.filter(shelter__id=shelter_id)
+        if status:
+            queryset = queryset.filter(status=status)
+
+        return queryset
 
 
-        
-        
-        
-# class PetPagination(PageNumberPagination):
-#     page_size = 10  
-#     page_size_query_param = 'page_size'
-#     max_page_size = 100
-# pagination_class = PetPagination
+
