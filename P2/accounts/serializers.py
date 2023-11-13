@@ -5,10 +5,12 @@ class CreateAccountSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True)
     password2 = serializers.CharField(write_only=True)
     isShelter =  serializers.BooleanField(default = False)
-    
+    id = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Account
-        fields = ["username","email", "first_name", "last_name",'password1','password2','isShelter']
+        fields = ["id","username","email", "first_name", "last_name",'password1','password2','isShelter']
+
 
 class AccountSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)

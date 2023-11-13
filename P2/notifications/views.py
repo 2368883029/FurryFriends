@@ -71,8 +71,11 @@ class NotificationManageViewSet(ModelViewSet):
             is_read = True
         
         list_ordered = Notifications.objects
-        if (sort):
+        if sort:
             list_ordered = list_ordered.order_by('-creation_time')
+        else:
+            list_ordered = list_ordered.order_by('creation_time')
+            
         list_info = list_ordered.filter(read=is_read).filter(owner=current_user)[start:end]
         serializer = self.get_serializer(list_info, many=True)
 

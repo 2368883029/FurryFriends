@@ -14,7 +14,7 @@ from django.contrib.contenttypes.models import ContentType
 class NotificationManageViewSet(ModelViewSet):
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticated]
-
+    
     def perform_create(self, serializer):
         serializer.save(from_user=self.request.user)
 
@@ -54,6 +54,9 @@ class NotificationManageViewSet(ModelViewSet):
             list_ordered = list_ordered.order_by('creation_time')
 
         if for_shelter:
+            # check if the user is a shelter:
+            if Account.objects.get(id=object_id).isShelter == False:
+                raise ValidationError("Target Account is not a Shelter")
             account_content_type = ContentType.objects.get_for_model(Account)
         else:
             account_content_type = ContentType.objects.get_for_model(Account)

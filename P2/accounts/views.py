@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from rest_framework.exceptions import PermissionDenied
+from rest_framework import status
 
 
 # Create your views here.
@@ -19,14 +20,13 @@ class AccountCreateView(CreateAPIView):
 
         if not password1 or not password2 or not (password1 == password2):
             print("bad passwords")
-            raise ValidationError("Passowrds do not match.") 
+            raise ValidationError("Passwords do not match.") 
         
-        Account.objects.create_user(**serializer.validated_data, 
+        Account.objects.create_user(**serializer.validated_data,  
                                               password=password1,
                                               location = '',
                                               phone_number = '')
         
-
 class AccountListView(ListAPIView):
     serializer_class = AccountSerializer
     permission_classes = [IsAuthenticated]

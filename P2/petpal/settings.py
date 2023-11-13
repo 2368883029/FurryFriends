@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'notifications',
     'comments',
     'accounts',
+    'applications',
     'listings'
 ]
 
