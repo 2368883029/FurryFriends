@@ -7,6 +7,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PetSearch from './pages/PetSearch';
 import Layout from './components/Layout';
+import PetSeekerDashboard from './pages/PetSeekerDashboard';
+import PetSeekerHelp from './pages/PetSeekerHelp';
+import PetSeekerAdoption from './pages/PetSeekerAdoption';
+import PetSeekerSecurity from './pages/PetSeekerSecurity';
 
 
 function Webpages(){
@@ -14,6 +18,10 @@ function Webpages(){
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<NotFound />} />
+        <Route path="pet-seeker-dashboard" element={<PetSeekerDashboard />} />
+        <Route path="pet-seeker-help" element={<PetSeekerHelp />} />
+        <Route path="pet-seeker-adoption" element={<PetSeekerAdoption />} />
+        <Route path="pet-seeker-security" element={<PetSeekerSecurity />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="petSearch" element={<PetSearch/>}/>
