@@ -39,7 +39,13 @@ const Login = () => {
                 return res.json()
             }
         }).then(json => {
-            const newobj = {...user,"id":json.id};
+            const newobj = {...user,
+                "id":json.id,
+                "firstName": json.first_name,
+                "lastName" : json.last_name,
+                "isShelter": json.isShelter,
+                'avatar_src' : json.avatar
+            };
             setUser(newobj);
             navigate("/petSearch");
         })

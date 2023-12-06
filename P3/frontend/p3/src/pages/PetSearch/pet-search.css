@@ -1,0 +1,84 @@
+.dropdown-toggle.sort-button{
+    background-color:white;
+    color:var(--purple);
+    font-weight: 600;
+}
+
+.menu-divider{
+    border-left:1px solid var(--darkgrey);
+    height:30px;
+    margin: 0px 10px;
+}
+
+.filter-button{
+    background-color: white;
+    font-weight: 600;
+    color:var(--purple);
+}
+
+.pet-card .card-title{
+    color:var(--purple);
+    font-weight: 700;
+}
+
+.card.pet-card{
+    width:20rem;
+    margin: 15px;
+    border-radius:20px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.pet-card-image{
+    height:auto;
+    width:100%;
+    object-fit:contain;
+}
+
+.pet-card-image-cont{
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 15rem;
+    width: 100%;
+}
+
+.view-pet-button{
+    background-color: var(--purple);
+    color:white;
+    cursor:pointer;
+    text-decoration: none;
+    padding:10px;
+    border-radius:10px;
+    width:70%;
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+}
+
+a.view-pet-button:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.filter-menu-option{
+    border: 1px solid var(--darkgrey);
+    padding:5px 10px;
+    margin: 0 5px;
+    background-color: transparent;
+    cursor:pointer;
+}
+
+.search-button{
+    background-color:var(--purple);
+    color:white;
+    border: 1px solid var(--purple);
+    cursor: pointer;
+}
+
+.search-bar{
+    border: 1px solid var(--purple);
+}
+
+.search-bar:focus-visible{
+    outline: none;
+}

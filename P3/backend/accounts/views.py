@@ -39,8 +39,8 @@ class AccountRetrieveView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        res = {"id": request.user.pk}
-        return JsonResponse(res)
+        curr = AccountSerializer(Account.objects.filter(id = request.user.pk).first())
+        return JsonResponse(curr.data)
 
 
 class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):

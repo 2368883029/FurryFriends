@@ -12,6 +12,6 @@ function showCard(cardId) {
       document.getElementById("btn-1").style.borderBottomWidth = "0px";
       document.getElementById("btn-2").style.borderBottomWidth = "5px";
     }
-  }
+}
 
   
