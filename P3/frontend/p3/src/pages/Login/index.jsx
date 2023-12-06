@@ -40,13 +40,15 @@ const Login = () => {
             }
         }).then(json => {
             const newobj = {...user,
-                "id":json.id,
+                "userId":json.id,
                 "firstName": json.first_name,
                 "lastName" : json.last_name,
                 "isShelter": json.isShelter,
                 'avatar_src' : json.avatar
             };
+            console.log(user);
             setUser(newobj);
+            console.log(user);
             navigate("/petSearch");
         })
         }).catch(error => {
@@ -58,7 +60,7 @@ const Login = () => {
 
     return <>
     <div id="alert" className="alert alert-danger m-0 d-none" role="alert">- </div>
-    <div className='body'>
+    <div className='body loginBody'>
         <div className="container">
             <div className="login form">
                 <header>Login</header>

@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { APIContext } from '../../contexts/APIContext';
 import BASE from '../../constants/baseUrl';
 import emptyProfile from '../../imgs/blank-profile.png';
+import './navbar.css';
 
 const Layout = () => {
     const location = useLocation();
@@ -138,7 +139,6 @@ const Layout = () => {
         </div>
         </div>
     </nav>
-    <h6>{user.avatar_src}</h6>
     <main>
         <Outlet/>
     </main>

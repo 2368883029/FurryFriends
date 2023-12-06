@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import PetSearch from './pages/PetSearch';
 import Layout from './components/Layout';
+import { useState } from 'react';
 
 
 function Webpages(){
@@ -27,8 +28,18 @@ function Webpages(){
 
 function App() {
 
+  const [user, setUser] = useState({
+    "userId":"", 
+    "token" : "",
+    "firstName": "",
+    "lastName" : "",
+    "isShelter": false,
+    'avatar_src' : ""
+});
+
+
   return (
-    <APIContext.Provider value={useAPIContext()}>
+    <APIContext.Provider value={{user, setUser}}>
       <main>
         <Webpages />
       </main>

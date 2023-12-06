@@ -44,7 +44,7 @@ const Register = () => {
 
     return <>
     <div className="alert alert-danger m-0 d-none" role="alert" id="alert">-</div>
-    <div className='body'>
+    <div className='body registerBody'>
         <div className="container">
             <div className="registration form">
                 <header>Signup</header>

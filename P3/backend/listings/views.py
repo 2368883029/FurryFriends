@@ -18,16 +18,24 @@ class PetCreateView(CreateAPIView):
     queryset = Pet.objects.all()
     permission_classes = [IsAuthenticated]
 
-    def perform_create(self, serializer):
-        user = self.request.user
-
-        if user.isShelter:
-            serializer.save(shelter=user)
-        else:
+    def create(self, request, *args, **kwargs):
+        serializer = super().get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        if not self.request.user.isShelter:
             return Response(
                 {"detail": "The user is not a shelter."},
-                status=status.HTTP_403_FORBIDDEN,
-            )
+                status=status.HTTP_403_FORBIDDEN)
+
+        self.perform_create(serializer)
+        headers = super().get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        if user.isShelter:
+            serializer.save(shelter=user)
+            
 
 
 class PetListView(ListAPIView):
@@ -36,7 +44,7 @@ class PetListView(ListAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ["name", "breed", "color", "sex"]
-    ordering_fields = ["name", "age", "size"]
+    ordering_fields = ["name", "age"]
     ordering = "name"
 
     class PetPagination(PageNumberPagination):
@@ -48,14 +56,34 @@ class PetListView(ListAPIView):
 
     def get_queryset(self):
         queryset = Pet.objects.all()
+
+        #filters
         shelter_id = self.request.query_params.get("shelter_id", None)
         status = self.request.query_params.get("status", "available")
+        sex = self.request.query_params.get("sex", None)
+        age = self.request.query_params.get("age", None)
+
+        #search bar
+        name =  self.request.query_params.get("name", "")
+
+        # sort option, name or age
+        sort = self.request.query_params.get("sort", "name")
+
 
         if shelter_id:
-            queryset = queryset.filter(shelter__id=shelter_id)
-        if status:
-            queryset = queryset.filter(status=status)
+            queryset = queryset.filter(shelter__id=shelter_id)    
+        queryset = queryset.filter(status=status)
+        if sex:
+            queryset = queryset.filter(sex=sex) 
+        if age:
+            queryset = queryset.filter(age__gt=age) 
+        if name:
+            queryset = queryset.filter(name__startswith=name) 
 
+        if sort == 'name':
+            queryset.order_by('name')
+        else:
+            queryset.order_by('age')
         return queryset
 
 

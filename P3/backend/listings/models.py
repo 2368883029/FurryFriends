@@ -7,7 +7,7 @@ class Pet(models.Model):
         ("available", "Available"),
         ("not_available", "Not Available"),
     ]
-
+    
     name = models.CharField(max_length=255)
     breed = models.CharField(max_length=255)
     sex = models.CharField(max_length=10)

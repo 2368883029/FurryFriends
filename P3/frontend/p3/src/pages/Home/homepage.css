@@ -27,7 +27,7 @@
     color: #fff;
 }
 
-.btn {
+.btn.homeBtn {
     display: inline-block;
     padding: 12px 24px;
     background-color: var(--purple);
@@ -39,11 +39,11 @@
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+.btn.homeBtn:hover {
     background-color: white;
 }
 
-.card {
+.card.homepageCard {
     background-color: rgba(60, 7, 87);
     height: 250px; 
     border: none; 

@@ -5,6 +5,7 @@ import {Link} from "react-router-dom"
 const Home = () => {
     return <>
     {/* navbar */}
+
     <div id="top-navbar">
       <nav className="navbar navbar-expand-lg">
         <Link className="navbar-brand logolink" to="/homepage">FurryFriends</Link>
@@ -31,39 +32,39 @@ const Home = () => {
       <div className="rectangle">
         <h1>Welcome to FurryFriends</h1>
         <p>Find your perfect furry friend today!</p>
-        <Link to="/login" className="btn">Get Started</Link>
+        <Link to="/login" className="btn homeBtn">Get Started</Link>
       </div>
     </div>
     {/* App Information Section */}
     <div className="container mt-5">
       <div className="row">
         <div className="col-lg-4 col-md-6 mb-4">
-          <div className="card">
+          <div className="card homepageCard">
             <div className="card-body text-center">
               <i className="fas fa-paw fa-2x"></i>
               <h1 className="highlight">1K+</h1>
               <h5 className="card-title">Adoptions a Day</h5>
-              <Link to="/login" className="btn btn-card">Get Started</Link>
+              <Link to="/login" className="btn homeBtn btn-card">Get Started</Link>
             </div>
           </div>
         </div>
         <div className="col-lg-4 col-md-6 mb-4">
-          <div className="card">
+          <div className="card homepageCard">
             <div className="card-body text-center">
               <i className="fas fa-users fa-2x"></i>
               <h1 className="highlight">10M+</h1>
               <h5 className="card-title">Satisfied Customers</h5>
-              <Link to="/login" className="btn btn-card">Get Started</Link>
+              <Link to="/login" className="btn homeBtn btn-card">Get Started</Link>
             </div>
           </div>
         </div>
         <div className="col-lg-4 col-md-6 mb-4">
-          <div className="card">
+          <div className="card homepageCard">
             <div className="card-body text-center">
               <i className="fas fa-heart fa-2x"></i>
               <h1 className="highlight">10M+</h1>
               <h5 className="card-title">Happy Pets</h5>
-              <Link to="/login" className="btn btn-card">Get Started</Link>
+              <Link to="/login" className="btn homeBtn btn-card">Get Started</Link>
             </div>
           </div>
         </div>
