@@ -20,7 +20,7 @@ class AccountCreateView(CreateAPIView):
 
         if not password1 or not password2 or not (password1 == password2):
             print("bad passwords")
-            raise ValidationError("Passwords do not match.") 
+            raise ValidationError({"password":"Passwords do not match."}) 
         
         Account.objects.create_user(**serializer.validated_data,  
                                               password=password1)

@@ -27,6 +27,7 @@ pip install asgiref==3.7.2 \
             Django==4.2.7 \
             djangorestframework==3.14.0 \
             djangorestframework-simplejwt==5.3.0 \
+            django-cors-headers==4.3.1 \
             Pillow==10.1.0 \
             pycparser==2.21 \
             PyJWT==2.8.0 \
