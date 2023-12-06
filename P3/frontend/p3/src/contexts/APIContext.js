@@ -2,14 +2,14 @@ import { useState } from "react";
 import { createContext } from "react";
 
 export const APIContext = createContext({
-    userName: "jack",
-    setUserName: () => {},
+    user: {"userId":"", "token" : ""},
+    setUser: () => {},
 });
 
 export const useAPIContext = () => {
-    const [userName, setUserName] = useState("jack");
+    const [user, setUser] = useState({"userId":"", "token" : ""});
 
     return {
-        userName, setUserName,
+        user, setUser,
     };
 }

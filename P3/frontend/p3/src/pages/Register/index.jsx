@@ -9,7 +9,7 @@ const Register = () => {
         event.preventDefault();
         let formData = event.target.elements;
         let error = false;
-        let response = fetch(`${BASE}/accounts/register/`,
+        fetch(`${BASE}/accounts/register/`,
         {
             method: "POST",
             body: JSON.stringify({
@@ -43,7 +43,7 @@ const Register = () => {
     }
 
     return <>
-    <div className="alert alert-danger m-0 d-none" role="alert" id="alert">This is a danger alert—check it out!</div>
+    <div className="alert alert-danger m-0 d-none" role="alert" id="alert">-</div>
     <div className='body'>
         <div className="container">
             <div className="registration form">

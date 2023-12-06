@@ -8,6 +8,9 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import status
 from applications.models import Applications
+from rest_framework.views import APIView
+from django.http import JsonResponse
+
 
 # Create your views here.
 class AccountCreateView(CreateAPIView):
@@ -31,6 +34,14 @@ class AccountListView(ListAPIView):
 
     def get_queryset(self):
         return Account.objects.all().filter(isShelter = True)
+
+class AccountRetrieveView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        res = {"id": request.user.pk}
+        return JsonResponse(res)
+
 
 class AccountRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
     serializer_class = AccountSerializer
