@@ -16,6 +16,7 @@ import PetUpdate from './pages/PetUpdate/pet-update';
 import { useState } from 'react';
 import PetDetails from './pages/PetDetails';
 import Notification from './pages/Notification';
+import CommentPage from './pages/Comments/comments';
 
 import PublicShelterDetails from './pages/PublicShelterDetails';
 
@@ -34,6 +35,7 @@ function Webpages(){
         <Route path="petDetails/:id" element={<PetDetails/>}/>
         <Route path="pet-update/:id" element={<PetUpdate/>}/>
         <Route path="shelterDetails/:id" element={<PublicShelterDetails/>}/>
+        <Route path="comments" element={<CommentPage/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/login" element={<Login />} />
