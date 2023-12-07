@@ -70,7 +70,7 @@ const PetSearch = () => {
     }
 
     return <>
-    <div className="container-fluid d-flex justify-content-between flex-row flex-wrap align-items-center pt-4">
+    <div className="container-fluid d-flex justify-content-between flex-row flex-wrap align-items-center pt-4 searchBarCont">
         <div className="w-50 d-flex justify-content-start align-items-center flex-row">
             <input type="search" className="search-bar p-1" onChange = {(event) => {setQuery({...query, name:event.target.value,page:1})}}placeholder="Search Name" aria-label="Search" />
         </div>

@@ -47,7 +47,7 @@ const PetAdd = () => {
     };
 
     return <>
-        <div className="content">
+        <div className="content petAddContent">
             <div className="main-content">
                 <div className="container">
                     <div className="form">

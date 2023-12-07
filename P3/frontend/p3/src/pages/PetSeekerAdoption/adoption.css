@@ -1,6 +1,7 @@
 .adoption-content{
     display: flex;
     overflow: hidden;
+    margin-top: 80px;
 }
 
 .adoption-content .main-content{

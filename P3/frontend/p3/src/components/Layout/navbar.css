@@ -1,3 +1,10 @@
 .notification-set1, .notification-set2{
     color: black;
 }
+#top-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 300;
+    background-color: #ffffff;
+}

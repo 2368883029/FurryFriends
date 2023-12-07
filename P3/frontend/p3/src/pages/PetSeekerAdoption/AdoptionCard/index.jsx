@@ -105,7 +105,6 @@ const AdoptionCard = ({ pet, type }) => {
         <div className="col-1"></div>
         <div className="col-12 col-md-2">
           <div className="adoption-image">
-            {console.log(petInfo)}
             <img src={petInfo.avatar ? petInfo.avatar : emptyProfile} alt="profile pic"/>
           </div>
         </div>

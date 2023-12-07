@@ -1,5 +1,5 @@
 
-.content {
+.content.homeContent {
     height: 600px;
     background: url("/src/imgs/dog-landing.jpg");
     background-size: cover;

@@ -47,7 +47,7 @@ const PetDetails = () => {
             headers: {Authorization: `Bearer ${user.token}`}
         }).then(res => res.json()).then(json => {
             let existing_app = json.exists;
-            if (existing_app){
+            if (existing_app || pet.status === "not_available" || user.isShelter){
                 document.getElementById("adopt-button").disabled = true;
             }
         })
@@ -69,7 +69,7 @@ const PetDetails = () => {
     }
 
     return <>
-    <div className="conatainer-fluid m-3 d-flex flex-column justify-content-start align-items-start ">
+    <div className="container-fluid d-flex flex-column justify-content-start align-items-start petDetailsCont">
       <Link to='/petSearch' className="back-button d-flex justify-content-center align-items-center flex-row"><span className="material-symbols-outlined">arrow_back</span>Back</Link>
       <div className="d-flex justify-content-lg-start flex-lg-row align-items-lg-start flex-column justify-content-center align-items-center ">
           <div className="image-cont w-100 w-lg-50">

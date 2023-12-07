@@ -12,7 +12,7 @@ const PetSeekerAdoption = () => {
     const {user} = useContext(APIContext);
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
-        { route: "/pet-seeker-adoption", name: "Adoption", icon: "inventory_2" },
+        { route: "/pet-seeker-adoption", name: user.isShelter ? "Listings" : "Adoption", icon: "inventory_2" },
         { route: "/pet-seeker-security", name: "Security", icon: "passkey" },
         { route: "/pet-seeker-help", name: "Help", icon: "help" },
     ];

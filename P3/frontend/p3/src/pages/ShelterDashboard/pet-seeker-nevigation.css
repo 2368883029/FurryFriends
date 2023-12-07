@@ -1,0 +1,98 @@
+#top-navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 300;
+  background-color: #ffffff;
+}
+
+.content{
+  margin-top: 80px;
+  overflow-y: hidden;
+}
+
+.sidenav {
+    position: fixed;
+    left: 0;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+    width: 280px;
+    background-color: #fff;
+    padding-top: 10px;
+    font-weight: 500;
+  }
+
+  .sidenav .btn {
+    padding: 10px 15px;
+    color: #1f1f1f;
+    background-color: #fff;
+  }
+
+  .sidenav hr {
+    width: 90%;
+  }
+
+  .sidenav .material-symbols-outlined {
+    line-height: 1;
+    margin-right: 20px;
+    font-size: 30px;
+  }
+
+  .sidenav .text {
+    font-size: 18px;
+  }
+
+  .sidenav .nav-link.active {
+    background-color: var(--purple);
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  .top-group,
+  .bottom-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 1000px) {
+    .sidenav {
+      position: relative;
+      max-height: 100px;
+      width: 100%;
+      flex-direction: row;
+    }
+
+    .sidenav .top-group {
+      max-height: 100px;
+      flex-direction: row;
+      justify-content: space-around;
+      flex: 1;
+    }
+
+    .sidenav .bottom-group,
+    .sidenav hr,
+    .sidenav .text {
+      display: none;
+    }
+
+    .sidenav .nav-link.active {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    .sidenav .material-symbols-outlined {
+      margin-right: 0px;
+    }
+
+    .sidenav .btn {
+      width: 20%;
+      justify-content: center;
+    }
+
+    .content{
+      margin-bottom: 100px;
+    }
+  }
