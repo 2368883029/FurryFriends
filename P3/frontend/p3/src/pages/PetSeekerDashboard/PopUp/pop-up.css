@@ -1,0 +1,42 @@
+.pop-up-card {
+    padding: 20px; 
+    position: absolute;
+    width: 50%;
+    height: auto; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .pop-up-card .card-body {
+    padding: 20px;
+  }
+  
+  .pop-up-card .card-title {
+    color: purple;
+    margin-bottom: 20px;
+    text-align: center; 
+  }
+  
+  .pop-up-card .pop-up-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .pop-up-card input[type="file"] {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .pop-up-card .btn {
+    padding: 10px 20px; 
+    width: 40%; 
+    margin: 0 5px;}

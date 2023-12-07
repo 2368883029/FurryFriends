@@ -48,6 +48,7 @@ const Login = () => {
                 'token': token
             };
             setUser(newobj);
+            localStorage.setItem("user", JSON.stringify(newobj));
             navigate("/petSearch");
         })
         }).catch(error => {
