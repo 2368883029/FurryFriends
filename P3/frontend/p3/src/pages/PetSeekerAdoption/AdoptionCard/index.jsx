@@ -49,7 +49,7 @@ const AdoptionCard = ({ pet, type }) => {
     
     const onApprove = async () => {
       try {
-          const response = await fetch(`${BASE}/applications/all/pending/?page=1&all=1`, {
+          const response = await fetch(`${BASE}/applications/all/?page=1&all=1&status=pending&search=`, {
               method: "GET",
               headers: {
                   "Content-Type": "application/json",
@@ -118,8 +118,11 @@ const AdoptionCard = ({ pet, type }) => {
                 {petInfo.size}lbs/{petInfo.age} years old
               </p>
               <p>
-                <span className="material-symbols-outlined"> home </span>
                 Approve Status: {pet.status}
+              </p>
+              <p>
+              <span className="material-symbols-outlined"> home </span>
+              Shelter ID: {petInfo.shelter}
               </p>
             </div>
             <Link to={detailLink} className="btn btn-secondary btn-petdetail">
