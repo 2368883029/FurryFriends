@@ -94,3 +94,7 @@
   .social-h3 {
     columns: var(--purple);
   }
+
+  .content.homeContent{
+    margin-top:70px;
+  }

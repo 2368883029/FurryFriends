@@ -5,5 +5,15 @@
 # 1. All the packages you need to install
 # 2. How to configure various servers (e.g., Nginx, Apache, etc)
 
+
+
+#BACKEND
+# run startup.sh
+# run run.sh
+
+
+
+#FRONTENT
 # npm i mapbox-gl for mapsnp
 # npm i react-bootstrap
+# npm start

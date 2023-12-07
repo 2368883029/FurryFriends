@@ -82,8 +82,6 @@ const AdoptionCard = ({ pet, type }) => {
       }
   }
 
-    
-
     return (
     <>
     <div className="card mb-3">
@@ -147,10 +145,6 @@ const AdoptionCard = ({ pet, type }) => {
             <a href={reviewLink} className="btn btn-light">
               <span className="material-symbols-outlined"> mode_comment </span>
               <span>Check Reviews</span>
-            </a>
-            <a href={helpLink} className="btn btn-light">
-              <span className="material-symbols-outlined"> help </span>
-              <span>Get Help</span>
             </a>
             <a href={trackLink} className="btn btn-light">
               <span className="material-symbols-outlined"> pin_drop </span>
