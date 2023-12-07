@@ -84,3 +84,20 @@
       margin-bottom: 100px;
     }
   }
+
+  
+@media (max-width: 1000px){
+
+    #side-navbar {
+        z-index: 300;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 2em;
+    }
+
+}

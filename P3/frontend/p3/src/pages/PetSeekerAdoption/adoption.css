@@ -1,0 +1,131 @@
+.adoption-content{
+    display: flex;
+    overflow: hidden;
+}
+
+.adoption-content .main-content{
+    flex-grow: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-left: calc(280px + 2em);
+    margin-right: 2em;
+}
+
+.adoption-content .pet-order-search{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    width: 100%;
+    justify-content: space-around
+}
+
+.adoption-content .pet-order-search > :nth-child(2){
+    max-width: 20%;
+}
+
+.adoption-content .pet-order-search > :first-child{
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.adoption-content .pet-adoption-records{
+    width: 80%;
+}
+
+.adoption-content .pet-adoption-records p, h6, span{
+    margin-bottom: 0;
+    font-size: 0.8em;
+}
+
+.adoption-content .pet-adoption-records h5{
+    margin-bottom: 0;
+    color: var(--purple);
+}
+
+.adoption-content .card-header{
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+}
+
+.adoption-content .card-header > :first-child{
+    margin-left: 2em;
+}
+
+.adoption-content .seeker-pet-record{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 0.5em;
+}
+
+.adoption-content .btn-petdetail{
+    height: 50px;
+    width: 150px;
+    background-color: var(--purple);
+}
+.adoption-content .pet-type{
+    color: rgb(128, 128, 128);
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.adoption-content .adoption-image{
+    height: 8em;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.adoption-content img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.adoption-content .adoption-records-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.adoption-content .adoption-records-buttons > a{
+    align-self:flex-end;
+    width: 250px;
+}
+
+@media (max-width: 1000px){
+
+    .adoption-content #side-navbar {
+        z-index: 300;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .adoption-content .main-content {
+        width: 100%;
+        margin-left: 2em;
+    }
+
+    .adoption-content input{
+        display: none;
+    }
+
+    .adoption-content .card-header{
+        padding-left: 0;
+    }
+
+    .adoption-content .card-header > :first-child{
+        margin-left: 1em;
+    }
+
+    .adoption-content .adoption-records-buttons > a{
+        align-self:center;
+        max-width: 250px;
+    }
+}
+
