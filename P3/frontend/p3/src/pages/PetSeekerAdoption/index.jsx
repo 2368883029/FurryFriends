@@ -7,8 +7,8 @@ import AdoptionList from "./AdoptionList";
 import { useContext } from "react";
 import { APIContext } from "../../contexts/APIContext";
 
-const PetSeekerAdoption = () => {
 
+const PetSeekerAdoption = () => {
     const {user} = useContext(APIContext);
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
@@ -20,7 +20,13 @@ const PetSeekerAdoption = () => {
     const [totalPages, setTotalPages] = useState(1);
     const [pets, setPets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (user.userId === '') {
+            navigate(`/login`);
+        }
+    });
     
     const handleSearch = () => {
         setQuery({...query, search: searchTerm});

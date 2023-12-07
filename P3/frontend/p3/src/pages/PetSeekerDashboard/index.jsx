@@ -10,6 +10,7 @@ import Popup from "./PopUp";
 const PetSeekerDashboard = () => {
     const {user} = useContext(APIContext);
     const [popupStatus, setPopupStatus] = useState(false);
+    const navigate = useNavigate();
 
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
@@ -22,7 +23,11 @@ const PetSeekerDashboard = () => {
         setPopupStatus(!popupStatus);
     }
 
-    console.log(user);
+    useEffect(() => {
+        if (user.userId === '') {
+            navigate(`/login`);
+        }
+    });
 
     return (
         <div className="pet-seeker-content">

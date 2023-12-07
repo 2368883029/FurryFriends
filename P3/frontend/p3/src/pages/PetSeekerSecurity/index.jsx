@@ -8,21 +8,37 @@ import SecurityEntry from "./SecurityEntry";
 
 const PetSeekerSecurity = () => {
     const navigate = useNavigate();
-    // const user = useContext(APIContext);
-    const user ={
-        name: "test",
-        email: "test",
-        phone_number: "test",
-        password: "test",
-        address: "test",
-        securityQuestion: "test"
-    }
+    const {user} = useContext(APIContext);
+    const [userInfo, setUserInfo] = useState({});
+  
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
         { route: "/pet-seeker-adoption", name: "Adoption", icon: "inventory_2" },
         { route: "/pet-seeker-security", name: "Security", icon: "passkey" },
         { route: "/pet-seeker-help", name: "Help", icon: "help" },
     ];
+
+    useEffect(() => {
+        let err = 0;
+        fetch(`${BASE}/accounts/${user.userId}/`, {
+            method: "GET",
+            headers:{
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${user.token}`, 
+            }
+        }).then(res => {
+            if(!res.ok){
+                err = 1;
+            }
+            return res.json();
+        }).then(json => {
+            if (err){
+                console.log(json);
+            } else {
+                setUserInfo(json);
+            }
+        })
+    }, user)
 
     return (
         <div className="seciroty-content">
@@ -37,12 +53,12 @@ const PetSeekerSecurity = () => {
    <div className="table-responsive">
       <table className="table align-middle">
          <tbody>
-            <SecurityEntry user_value={user.name} tag={"Name"}/>
-            <SecurityEntry user_value={user.email} tag={"Email"}/>
-            <SecurityEntry user_value={user.phone_number} tag={"Phone Number"}/>
-            <SecurityEntry user_value={user.password} tag={"Password"}/>
-            <SecurityEntry user_value={user.address} tag={"Address"}/>
-            <SecurityEntry user_value={user.securityQuestion} tag={"Security Question"}/>
+            <SecurityEntry user_value={userInfo.username} tag={"User Name"} userInfo={userInfo} jsonTag={"username"} setUserInfo={setUserInfo}/>
+            <SecurityEntry user_value={userInfo.phone_number} tag={"Phone Number"} userInfo={userInfo} jsonTag={"phone_number"} setUserInfo={setUserInfo}/>
+            <SecurityEntry user_value={"***************"} tag={"Password"} userInfo={userInfo} jsonTag={"password"} setUserInfo={setUserInfo}/>
+            <SecurityEntry user_value={userInfo.location} tag={"Address"} userInfo={userInfo} jsonTag={"location"} setUserInfo={setUserInfo}/>
+            <SecurityEntry user_value={userInfo.first_name} tag={"first name"} userInfo={userInfo} jsonTag={"first_name"} setUserInfo={setUserInfo}/>
+            <SecurityEntry user_value={userInfo.last_name} tag={"last name"} userInfo={userInfo} jsonTag={"last_name"} setUserInfo={setUserInfo}/>
          </tbody>
       </table>
    </div>
