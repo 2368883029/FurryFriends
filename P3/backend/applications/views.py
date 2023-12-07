@@ -11,6 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import Value
 from django.db.models import CharField
 from django.db.models.functions import Concat
+from rest_framework.views import APIView
 
 from .paginators import CustomPagination
 
