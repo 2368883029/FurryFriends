@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { APIContext } from '../../contexts/APIContext';
+import { useNavigate } from 'react-router-dom';
 import BASE from '../../constants/baseUrl';
 import './pet-add.css';
 
 const PetAdd = () => {
     const { user } = useContext(APIContext);
+    const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState(null);
 
     const handleSubmit = (event) => {
@@ -15,6 +17,7 @@ const PetAdd = () => {
         const data = Array.from(event.target.elements)
             .filter((input) => input.name)
             .reduce((obj, input) => Object.assign(obj, { [input.name]: input.value }), {});
+
 
         fetch(`${BASE}/listings/`,
             {
@@ -34,7 +37,7 @@ const PetAdd = () => {
                 if (error) {
                     setErrorMessage(json);
                 } else {
-                    // redirect
+                    navigate(`/petDetails/${json.id}`);
                 }
             })
             .catch((error) => {
@@ -56,7 +59,6 @@ const PetAdd = () => {
                                 ))}
                             </div>
                         )}
-                        <p>Bearer {user.token}</p>
                         <form onSubmit={handleSubmit} encType="multipart/form-data">
                             <input type="text" name="name" placeholder="Enter the pet's name" />
                             <input type="text" name="sex" placeholder="Enter the pet's sex" />

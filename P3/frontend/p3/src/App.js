@@ -12,6 +12,7 @@ import PetSeekerHelp from './pages/PetSeekerHelp';
 import PetSeekerAdoption from './pages/PetSeekerAdoption';
 import PetSeekerSecurity from './pages/PetSeekerSecurity';
 import PetAdd from './pages/PetAdd/pet-add';
+import PetUpdate from './pages/PetUpdate/pet-update';
 import { useState } from 'react';
 import PetDetails from './pages/PetDetails';
 
@@ -29,6 +30,7 @@ function Webpages(){
         <Route path="petSearch" element={<PetSearch/>}/>
         <Route path="pet-add" element={<PetAdd/>}/>
         <Route path="petDetails/:id" element={<PetDetails/>}/>
+        <Route path="pet-update/:id" element={<PetUpdate/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/login" element={<Login />} />
