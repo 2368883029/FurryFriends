@@ -69,7 +69,6 @@ const Login = () => {
                 <input type="password" placeholder="Enter your password" name='password' />
                 <Link to="/login">Forgot password?</Link>
                 <input type="submit" className="button" value="Login" />
-                
                 </form>
                 <div className="signup">
                     <span className="signup">

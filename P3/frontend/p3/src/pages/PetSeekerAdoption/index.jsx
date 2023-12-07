@@ -21,6 +21,7 @@ const PetSeekerAdoption = () => {
     const [pets, setPets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
+    const type = user.isShelter;
 
     useEffect(() => {
         if (user.userId === '') {
@@ -89,7 +90,7 @@ const PetSeekerAdoption = () => {
                             </div>
                         </div>
                     </div>
-                    <AdoptionList pets={pets} />
+                    <AdoptionList pets={pets} type={type} />
                     <div >
                     <p>
                         {query.page > 1 && <button className="btn btn-outline-secondary" onClick={() => changePage(query.page - 1)}>Previous</button>}
