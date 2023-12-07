@@ -24,6 +24,8 @@ const PetDetails = () => {
     const {user} = useContext(APIContext);
     const { id } = useParams();
 
+    user.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDAyNjMwLCJpYXQiOjE3MDE5MTYyMzAsImp0aSI6IjFhNmJhNDQ4MGQ3YzQwYzFiMzYzYjIxOWZmZTFmZWUwIiwidXNlcl9pZCI6Mn0.KbEGnzYW-E1lfqOTZZZEHlsYBN5LgQTIex8akaZhNS0";
+
     function capitalizeFirstLetter(string) {
         if (string === undefined || string === null || string.length <= 0){
             return ""
