@@ -14,6 +14,7 @@ const AdoptionCard = ({ pet, type }) => {
     const {user} = useContext(APIContext);
     const pet_creation = pet.creation_time.split('T')[0];
     const pet_update = pet.last_update_time.split('T')[0];
+    const [approvalCompleted, setApprovalCompleted] = useState(false);
 
     const detailLink = `/petDetails/${pet.id}`;
     const chatLink = `/pet-seeker-adoption/${pet.id}/chat`;
@@ -73,11 +74,15 @@ const AdoptionCard = ({ pet, type }) => {
                   },
                   body: JSON.stringify({ status: newStatus })
               });
+
+              setApprovalCompleted(true);
           }
       } catch (error) {
           console.error("Error in processing applications:", error);
       }
   }
+
+    
 
     return (
     <>
