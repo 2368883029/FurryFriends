@@ -4,6 +4,7 @@ import { Outlet, Link, useLocation } from "react-router-dom"
 import { useContext, useState, useEffect } from 'react';
 import { APIContext } from "../../../contexts/APIContext";
 import BASE from "../../../constants/baseUrl";
+import emptyProfile from '../../../imgs/blank-profile.png';
 
 /**
  */
@@ -21,7 +22,6 @@ const AdoptionCard = ({ pet }) => {
     const trackLink = `/pet-seeker-adoption/${pet.id}/track`;
 
     const [petInfo, setPetInfo] = useState({});
-    const [shelterInfo, setShelterInfo] = useState({});
 
     useEffect(() => {
         let err = 0;
@@ -46,29 +46,6 @@ const AdoptionCard = ({ pet }) => {
         })
     }, pet);
 
-    useEffect(() => {
-        let error=0;
-        fetch(`${BASE}/accounts/${petInfo.shelter}/`, {
-            method: "GET",
-            headers:{
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${user.token}`, 
-            }
-        }).then(res => {
-            if (!res.ok){
-                error=1;
-            } else {
-                return res.json();
-            }
-        }).then(json => {
-            if (error){
-                console.log(json);
-            } else {
-                console.log(json);
-                setShelterInfo(json);
-            }
-        })}, pet);
-
     return (
     <>
     <div className="card mb-3">
@@ -90,7 +67,8 @@ const AdoptionCard = ({ pet }) => {
         <div className="col-1"></div>
         <div className="col-12 col-md-2">
           <div className="adoption-image">
-            
+            {console.log(petInfo)}
+            <img src={petInfo.avatar ? petInfo.avatar : emptyProfile} alt="profile pic"/>
           </div>
         </div>
         <div className="col-12 col-md-3">
@@ -104,7 +82,7 @@ const AdoptionCard = ({ pet }) => {
               </p>
               <p>
                 <span className="material-symbols-outlined"> home </span>
-                {shelterInfo.first_name} {shelterInfo.last_name}
+                Shelter ID: {petInfo.shelter}
               </p>
             </div>
             <a href={detailLink} className="btn btn-secondary btn-petdetail">
