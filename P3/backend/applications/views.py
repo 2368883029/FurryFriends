@@ -12,7 +12,7 @@ from django.db.models import Value
 from django.db.models import CharField
 from django.db.models.functions import Concat
 from rest_framework.views import APIView
-
+from django.http import JsonResponse
 from .paginators import CustomPagination
 
 # Create your views here.
