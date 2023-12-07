@@ -11,6 +11,7 @@ const CommentPage = ({}) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); 
   const { objectId, forShelter } = useParams();
+  user.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzAyMDY1NTI1LCJpYXQiOjE3MDE5NzkxMjUsImp0aSI6ImI0MDU0ZmUxNzc0NzQ4NzdhOTE0ZWYwMjU1NmZmNTY2IiwidXNlcl9pZCI6MX0.sq0t94hjvzaTVsm-BTQmrWe5RA7oRA7CeELOIBli_Us"
 
   useEffect(() => {
     fetchComments();
@@ -104,7 +105,7 @@ const CommentPage = ({}) => {
               Previous
             </button>
             <span>Page {currentPage}</span>
-            <button onClick={handleNextPage} disabled={data.length === 0}>Next</button>
+            <button onClick={handleNextPage} disabled={comments.length === 0}>Next</button>
           </div>
 
           <form onSubmit={handleCommentSubmit}>
