@@ -106,7 +106,7 @@ class ApplicationCreateView(CreateAPIView):
             content_object=application, 
             message=f"New applicaiton by {self.request.user.username}",
             type='new_application',
-            action_link=f'/applications/{application.id}',
+            action_link=f'/pet-seeker-adoption',
         )
 
 
