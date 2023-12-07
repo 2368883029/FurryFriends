@@ -25,25 +25,28 @@ class AppplicationListView(ListAPIView):
         wanted_status = self.request.query_params.get('status')
         search_query = self.request.query_params.get('search', None)
         all_query = self.request.query_params.get('all', None)
-            
-        print(wanted_status)
-        print(search_query)
-        print(all_query)
+        order = self.request.query_params.get('order', None)
+
         if all_query == '1':
             self.pagination_class = None
         else:
             self.pagination_class = CustomPagination
 
         if self.request.user.isShelter:
-            apps = Applications.objects.filter(pet__shelter = self.request.user).order_by('creation_time','last_update_time')
+            apps = Applications.objects.filter(pet__shelter=self.request.user)
         else:  
-            apps = Applications.objects.filter(applicant = self.request.user).order_by('creation_time','last_update_time')
+            apps = Applications.objects.filter(applicant=self.request.user)
 
         if search_query:
             apps = apps.filter(pet__name__icontains=search_query)
 
         if wanted_status != '':
-            return apps.filter(status = wanted_status)
+            return apps.filter(status=wanted_status)
+        
+        if order == '0':
+            apps = apps.order_by('last_update_time')
+        else:
+            apps = apps.order_by('-last_update_time')
 
         return apps
     
