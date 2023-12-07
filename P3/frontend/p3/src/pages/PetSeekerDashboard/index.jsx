@@ -25,7 +25,7 @@ const PetSeekerDashboard = () => {
 
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
-        { route: "/pet-seeker-adoption", name: user.isShelter ? "Listings" : "Adoption", icon: "inventory_2" },
+        ... user.isShelter ? []:[{ route: "/pet-seeker-adoption", name: user.isShelter ? "Listings" : "Adoption", icon: "inventory_2" }],
         { route: "/pet-seeker-security", name: "Security", icon: "passkey" },
         { route: "/pet-seeker-help", name: "Help", icon: "help" },
     ];
@@ -71,7 +71,6 @@ const PetSeekerDashboard = () => {
             
             fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${user.location}.json?proximity=ip&access_token=${token}`).then(res =>res.json())
             .then(json => {
-                console.log(json.features);
                 if (json.features.length > 0){
                     let long = json.features[0].center[0];
                     let lat = json.features[0].center[1];
@@ -94,11 +93,8 @@ const PetSeekerDashboard = () => {
     return (<>
 
         <div className="pet-seeker-content">
-            
             <SideNevigation buttons={buttons} />
-                    
             <div className="main-content">
-            
                 <div className="dashPic">
                     <img src={user.avatar_src ? `${BASE}${user.avatar_src}` : emptyProfile} alt="profile pic" onClick={() => {togglePopup()}}/>
                 </div>
@@ -111,7 +107,7 @@ const PetSeekerDashboard = () => {
                 <div className="align-cards shelterDash">
                     
                     {shelterListings.map((l)=> {
-                        return <div className="card">
+                        return <div className="card" key={l.id}>
                             <div className="pet-image">
                                 <img src={l.avatar ?? emptyProfile} alt="Avatar" className="w-100"/>
                             </div>

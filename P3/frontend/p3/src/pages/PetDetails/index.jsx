@@ -86,7 +86,7 @@ const PetDetails = () => {
               </div>
               <div className="my-3">
                   <h5 className="color-purple m-0">Location</h5>
-                  <a href="./shelter-detail.html" className="m-0 text-dark">Toronto Animal Rescue</a>
+                  <Link to={`/shelterDetails/${pet.shelter}`} className="m-0 text-dark">Toronto Animal Rescue</Link>
               </div>
               <div className="my-3">
                   <h5 className="color-purple m-0">Description</h5>
