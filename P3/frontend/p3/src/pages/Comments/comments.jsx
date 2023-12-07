@@ -4,18 +4,18 @@ import { APIContext } from '../../contexts/APIContext';
 import { useParams } from 'react-router-dom';
 import './comments.css';
 
-const CommentPage = ({ objectId, forShelter }) => {
+const CommentPage = ({}) => {
   const { user } = useContext(APIContext);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1); 
   const { objectId, forShelter } = useParams();
 
   useEffect(() => {
     fetchComments();
-  }, [objectId, forShelter, currentPage]);
-  
+  }, [objectId, forShelter, currentPage]); 
+
   const fetchComments = async () => {
     try {
       const response = await fetch(
@@ -104,7 +104,7 @@ const CommentPage = ({ objectId, forShelter }) => {
               Previous
             </button>
             <span>Page {currentPage}</span>
-            <button onClick={handleNextPage} disabled={comments.length === 0}>Next</button>
+            <button onClick={handleNextPage} disabled={data.length === 0}>Next</button>
           </div>
 
           <form onSubmit={handleCommentSubmit}>

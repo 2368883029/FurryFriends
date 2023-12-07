@@ -35,7 +35,7 @@ function Webpages(){
         <Route path="petDetails/:id" element={<PetDetails/>}/>
         <Route path="pet-update/:id" element={<PetUpdate/>}/>
         <Route path="shelterDetails/:id" element={<PublicShelterDetails/>}/>
-        <Route path="comments" element={<CommentPage/>}/>
+        <Route path="comments/:objectId/:forShelter" element={<CommentPage/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/login" element={<Login />} />
