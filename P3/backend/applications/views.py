@@ -8,7 +8,8 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.contenttypes.models import ContentType
-
+from rest_framework.views import APIView
+from django.http import JsonResponse
 from .paginators import CustomPagination
 
 # Create your views here.
@@ -27,6 +28,17 @@ class AppplicationListView(ListAPIView):
 
         return apps
 
+class ApplicationExistsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request,*args, **kwargs):
+        seeker_id = self.request.query_params.get('userId')
+        listing_id = self.request.query_params.get('listingId')
+        res = Applications.objects.filter(pet = listing_id).filter(applicant = seeker_id).first()
+        if res:
+            return JsonResponse({"exists": True})
+        else:
+            return JsonResponse({"exists": False})
 
 
 class ApplicationCreateView(CreateAPIView):

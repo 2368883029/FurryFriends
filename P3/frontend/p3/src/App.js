@@ -12,6 +12,7 @@ import PetSeekerHelp from './pages/PetSeekerHelp';
 import PetSeekerAdoption from './pages/PetSeekerAdoption';
 import PetSeekerSecurity from './pages/PetSeekerSecurity';
 import { useState } from 'react';
+import PetDetails from './pages/PetDetails';
 
 
 function Webpages(){
@@ -23,11 +24,12 @@ function Webpages(){
         <Route path="pet-seeker-help" element={<PetSeekerHelp />} />
         <Route path="pet-seeker-adoption" element={<PetSeekerAdoption />} />
         <Route path="pet-seeker-security" element={<PetSeekerSecurity />} />
-        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
         <Route path="petSearch" element={<PetSearch/>}/>
+        <Route path="petDetails/:id" element={<PetDetails/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
+      <Route path="/login" element={<Login />} />
       <Route path="/homepage" element={<Home />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
