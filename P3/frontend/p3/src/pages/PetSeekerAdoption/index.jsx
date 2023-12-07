@@ -53,7 +53,7 @@ const PetSeekerAdoption = () => {
     useEffect(() => {
         let err = 0;
         const {search, page, status, sort} = query;
-        fetch(`${BASE}/applications/all/??page=${page}&search=${search}&status=${status}&all=${status}&sort=${sort}`, {
+        fetch(`${BASE}/applications/all/?page=${page}&search=${search}&status=${status}&all=0&sort=${sort}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
