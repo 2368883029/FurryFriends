@@ -16,12 +16,17 @@ const PetSeekerAdoption = () => {
         { route: "/pet-seeker-security", name: "Security", icon: "passkey" },
         { route: "/pet-seeker-help", name: "Help", icon: "help" },
     ];
-    const [query, setQuery] = useState({search: "", page: 1, status: "pending"})
+    const [query, setQuery] = useState({search: "", page: 1, status: "pending", sort: 0})
     const [totalPages, setTotalPages] = useState(1);
     const [pets, setPets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
     const type = user.isShelter;
+
+    const setCheck = (event, newQuery) => {
+        event.preventDefault();
+        setQuery(newQuery);
+    }
 
     useEffect(() => {
         if (user.userId === '') {
@@ -41,10 +46,14 @@ const PetSeekerAdoption = () => {
         setQuery(prevQuery => ({ ...prevQuery, page: newPage }));
     };
 
+    const setSort = () => {
+        setQuery({...query, sort: query.sort === 0 ? 1 : 0});
+    }
+
     useEffect(() => {
         let err = 0;
-        const {search, page, status} = query;
-        fetch(`${BASE}/applications/all/${status}/?page=${page}&search=${search}`, {
+        const {search, page, status, sort} = query;
+        fetch(`${BASE}/applications/all/??page=${page}&search=${search}&status=${status}&all=${status}&sort=${sort}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -61,7 +70,6 @@ const PetSeekerAdoption = () => {
                 console.log(json);
             } else {
                 setPets(json.results);
-                console.log(json.results);
                 setTotalPages(json.max_pages);
             }
         })
@@ -90,6 +98,19 @@ const PetSeekerAdoption = () => {
                             </div>
                         </div>
                     </div>
+                    <div id="adoption_option" className="d-flex justify-content-end flex-row align-items-center">
+                        <button onClick={(event) => setCheck(event, {...query, status: query.status === "" ? "pending": "", page: 1})} className={`filter-menu-option ${query.status === "pending" ? 'blue-button' : ''}`}>Pending only</button>
+                    <div/>
+                    <div className="menu-divider"></div>
+                    <div className="btn-group">
+                        <button type="button" className="btn dropdown-toggle sort-button m-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort:
+                        </button>
+                        <div className="dropdown-menu dropdown-menu-right">
+                            <button className="dropdown-item" onClick={setSort} type="button">Newly Mofitication</button>
+                        </div>
+                    </div>
+            </div>
                     <AdoptionList pets={pets} type={type} />
                     <div >
                     <p>
