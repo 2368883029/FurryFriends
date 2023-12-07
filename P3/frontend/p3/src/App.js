@@ -53,6 +53,7 @@ function App() {
     "lastName" : "",
     "isShelter": false,
     'avatar_src' : "",
+    'location' : ""
    })
     
     return (

@@ -64,21 +64,31 @@ const PetSeekerDashboard = () => {
     }
 
     useEffect(() => {
-        if (map.current) return; // initialize map only once
-        mapboxgl.accessToken = 'pk.eyJ1Ijoia2lyYW4xMzciLCJhIjoiY2xwdmxkNzhxMDYxbTJqcDlzd3hoZ2JpaSJ9.jqNtixucEvi-Cb9536tj6A';
-
-        map.current = new mapboxgl.Map({
-        container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/streets-v12',
-        center: [12.550343, 55.665957],
-        zoom: zoom
-        });
-
-        const marker1 = new mapboxgl.Marker()
-        .setLngLat([12.554729, 55.70651])
-        .addTo(map.current);
-         
-
+        if (user.location !== ""){
+            if (map.current) return; // initialize map only once
+            let token = 'pk.eyJ1Ijoia2lyYW4xMzciLCJhIjoiY2xwdmxkNzhxMDYxbTJqcDlzd3hoZ2JpaSJ9.jqNtixucEvi-Cb9536tj6A';
+            mapboxgl.accessToken = token;
+            
+            fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${user.location}.json?proximity=ip&access_token=${token}`).then(res =>res.json())
+            .then(json => {
+                console.log(json.features);
+                if (json.features.length > 0){
+                    let long = json.features[0].center[0];
+                    let lat = json.features[0].center[1];
+                    map.current = new mapboxgl.Map({
+                        container: mapContainer.current,
+                        style: 'mapbox://styles/mapbox/streets-v12',
+                        center: [long, lat],
+                        zoom: zoom
+                        });
+                        
+                        const marker1 = new mapboxgl.Marker()
+                        .setLngLat([long, lat])
+                        .addTo(map.current);
+                }
+                
+            })
+        }
     },[]);
 
     return (<>
@@ -97,7 +107,9 @@ const PetSeekerDashboard = () => {
                 <div id="welcome-message">Welcome, {user.firstName}</div>
                 <div ref={mapContainer} className="map-container" />
                 <div id="pet-card-container"></div>
+                {user.isShelter ? <h1>Your Listings</h1> : <></>}
                 <div className="align-cards shelterDash">
+                    
                     {shelterListings.map((l)=> {
                         return <div className="card">
                             <div className="pet-image">
