@@ -8,10 +8,9 @@ import emptyProfile from '../../imgs/blank-profile.png';
 import Popup from "./PopUp";
 
 const PetSeekerDashboard = () => {
-    const user = useContext(APIContext);
+    const {user} = useContext(APIContext);
     const [popupStatus, setPopupStatus] = useState(false);
 
-    const navigate = useNavigate();
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
         { route: "/pet-seeker-adoption", name: "Adoption", icon: "inventory_2" },
@@ -22,6 +21,8 @@ const PetSeekerDashboard = () => {
     const togglePopup = () => {
         setPopupStatus(!popupStatus);
     }
+
+    console.log(user);
 
     return (
         <div className="pet-seeker-content">
@@ -34,7 +35,7 @@ const PetSeekerDashboard = () => {
                     <p>Change Profile Picture</p>
                 </div>
                 {popupStatus && <Popup onClose={togglePopup} />}
-                <div id="welcome-message">Welcome, {user.name}</div>
+                <div id="welcome-message">Welcome, {user.firstName}</div>
                 <div id="pet-card-container"></div>
             </div>
         </div>
