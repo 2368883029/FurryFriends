@@ -3,6 +3,7 @@ import { useState , useEffect} from "react";
 import { useContext } from 'react';
 import { APIContext } from '../../contexts/APIContext';
 import BASE from '../../constants/baseUrl';
+import { Link } from 'react-router-dom';
 
 const PetSearch = () => {
     const [query, setQuery] = useState({page:1,name:"",status:"available",sort:"name"});
@@ -150,7 +151,7 @@ const PetSearch = () => {
                     <span className="material-symbols-outlined">home</span>
                     <p>{getShelterName(shelters,listing.shelter)}</p>
                 </div>
-                <a href="./pet-details.html" className="view-pet-button">Learn More </a>
+                <Link to={`/petDetails/${listing.id}`} className="view-pet-button">Learn More </Link>
             </div>
         </div>
         })}

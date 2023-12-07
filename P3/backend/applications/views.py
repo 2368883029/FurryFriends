@@ -44,6 +44,17 @@ class AppplicationListView(ListAPIView):
         response.data['max_pages'] = self.paginator.page.paginator.num_pages
         return response
 
+class ApplicationExistsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request,*args, **kwargs):
+        seeker_id = self.request.query_params.get('userId')
+        listing_id = self.request.query_params.get('listingId')
+        res = Applications.objects.filter(pet = listing_id).filter(applicant = seeker_id).first()
+        if res:
+            return JsonResponse({"exists": True})
+        else:
+            return JsonResponse({"exists": False})
 
 
 class ApplicationCreateView(CreateAPIView):
