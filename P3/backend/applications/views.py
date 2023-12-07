@@ -30,13 +30,9 @@ class AppplicationListView(ListAPIView):
         else:  
             apps = Applications.objects.filter(applicant = self.request.user).filter(status = wanted_status).order_by('creation_time','last_update_time')
 
-        # Add Search
-        print(apps)
-        print(search_query)
         if search_query:
             apps = apps.filter(pet__name__icontains=search_query)
 
-        print(apps)
         return apps
     
     

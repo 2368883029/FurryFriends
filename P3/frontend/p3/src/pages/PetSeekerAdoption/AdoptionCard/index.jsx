@@ -14,7 +14,7 @@ const AdoptionCard = ({ pet }) => {
     const pet_creation = pet.creation_time.split('T')[0];
     const pet_update = pet.last_update_time.split('T')[0];
 
-    const detailLink = `/detail/${pet.id}`;
+    const detailLink = `/petDetails/${pet.id}`;
     const chatLink = `/pet-seeker-adoption/${pet.id}/chat`;
     const reviewLink = `/pet-seeker-adoption/${pet.id}/review`;
     const helpLink = `/pet-seeker-adoption/${pet.id}/help`;
