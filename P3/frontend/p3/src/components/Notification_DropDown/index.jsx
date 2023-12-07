@@ -2,6 +2,8 @@ import { useState, useContext, useEffect} from "react";
 import { APIContext } from "../../contexts/APIContext";
 import BASE from "../../constants/baseUrl";
 import NotificationBox from "../Notification_box";
+import { DropdownMenu } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Notification_DropDown = () => {
     const [notifications, setNotifications] = useState([]);
@@ -45,16 +47,17 @@ const Notification_DropDown = () => {
             aria-labelledby="dropdownMenuButton"
         >
             <div className="dropdown-header d-flex justify-content-between">
+                {console.log(activeCard === 'notification-set2')}
                 <button
-                    id="btn-1"
-                    className={`btn btn-sm btn-light ${activeCard === 'notification-set1' ? 'active-btn' : ''}`}
+                    id={`${activeCard === 'notification-set1' ? 'active-btn' : ''}`}
+                    className={`btn btn-sm btn-light`}
                     onClick={() => handleCardChange('notification-set1', 1)}
                 >
                     Chat
                 </button>
                 <button
-                    id="btn-2"
-                    className={`btn btn-sm btn-light ${activeCard === 'notification-set' ? 'active-btn' : ''}`}
+                    id={`${activeCard === 'notification-set2' ? 'active-btn' : ''}`}
+                    className={`btn btn-sm btn-light`}
                     onClick={() => handleCardChange('notification-set2', 0)}
                 >
                     System Notification
@@ -62,12 +65,17 @@ const Notification_DropDown = () => {
             </div>
             <div className="dropdown-content">
                 <div id="notification-set1" style={{ display: activeCard === 'notification-set1' ? 'block' : 'none' }}>
-                    {console.log(notifications)}
+                    <div style={{ textAlign: 'right', marginRight: '20px'}}>
+                        <Link to="/notification">More details</Link>
+                    </div>
                     {notifications?.map((notification) => (
                         <NotificationBox key={notification.id} notification={notification}/>
                     ))}
                 </div>
                 <div id="notification-set2" style={{ display: activeCard === 'notification-set2' ? 'block' : 'none' }}>
+                    <div style={{ textAlign: 'right', marginRight: '20px'}}>
+                        <Link to="/notification">More details</Link>
+                    </div>
                     {notifications?.map((notification) => (
                         <NotificationBox key={notification.id} notification={notification}/>
                     ))}

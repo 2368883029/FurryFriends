@@ -39,7 +39,7 @@ const Layout = () => {
             id="dropdownMenuButton"
             data-toggle="dropdown"
             role="menu">
-            <Link to="." className="notif-icon-container mt-2 mt-lg-0">
+            <Link to="/notification" className="notif-icon-container mt-2 mt-lg-0">
             <span className="material-symbols-outlined notif-icon"
                 >notifications</span>
             <span className="notif-badge"></span>

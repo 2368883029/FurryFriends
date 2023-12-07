@@ -83,10 +83,10 @@ const AdoptionCard = ({ pet }) => {
                 Shelter ID: {petInfo.shelter}
               </p>
             </div>
-            <a href={detailLink} className="btn btn-secondary btn-petdetail">
+            <Link to={detailLink} className="btn btn-secondary btn-petdetail">
               <span className="material-symbols-outlined"> info </span>
               <span>Detail</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="col-12 col-md-6">

@@ -138,7 +138,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 content_object=instance,
                 message=f"Application status updated for pet {instance.pet.name}",
                 type='status_update',
-                action_link=f'/applications/{instance.id}'
+                action_link=f'/pet-seeker-adoption'
             )
 
         return response

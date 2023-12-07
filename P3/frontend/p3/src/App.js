@@ -15,6 +15,7 @@ import PetAdd from './pages/PetAdd/pet-add';
 import PetUpdate from './pages/PetUpdate/pet-update';
 import { useState } from 'react';
 import PetDetails from './pages/PetDetails';
+import Notification from './pages/Notification';
 
 
 function Webpages(){
@@ -22,6 +23,7 @@ function Webpages(){
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<NotFound />} />
+        <Route path='notification' element={<Notification/>}/>
         <Route path="pet-seeker-dashboard" element={<PetSeekerDashboard />} />
         <Route path="pet-seeker-help" element={<PetSeekerHelp />} />
         <Route path="pet-seeker-adoption" element={<PetSeekerAdoption />} />
