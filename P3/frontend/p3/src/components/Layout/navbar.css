@@ -1,3 +1,6 @@
+.notification-set1, .notification-set2{
+    color: black;
+}
 #top-navbar {
     position: fixed;
     top: 0;

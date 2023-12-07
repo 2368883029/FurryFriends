@@ -118,7 +118,7 @@ a.nav-link:hover{
   border-radius: 0;
   font-size: 0.9em;
 }
-.notification-dropdown #btn-1{
+.dropdown-menu #active-btn{
   border-bottom-width: 5px;
 }
 

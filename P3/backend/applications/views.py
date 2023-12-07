@@ -8,6 +8,9 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.contenttypes.models import ContentType
+from django.db.models import Value
+from django.db.models import CharField
+from django.db.models.functions import Concat
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from .paginators import CustomPagination
@@ -20,13 +23,29 @@ class AppplicationListView(ListAPIView):
 
     def get_queryset(self):
         wanted_status = self.kwargs.get('status')
+        search_query = self.request.query_params.get('search', None)
+        all_query = self.request.query_params.get('all', None)
+
+        if all_query == '1':
+            self.pagination_class = None
+        else:
+            self.pagination_class = CustomPagination
+
         if self.request.user.isShelter:
             apps = Applications.objects.filter(pet__shelter = self.request.user).filter(status = wanted_status).order_by('creation_time','last_update_time')
-        else:
-            
+        else:  
             apps = Applications.objects.filter(applicant = self.request.user).filter(status = wanted_status).order_by('creation_time','last_update_time')
 
+        if search_query:
+            apps = apps.filter(pet__name__icontains=search_query)
+
         return apps
+    
+    
+    def get_paginated_response(self, data):
+        response = super().get_paginated_response(data)
+        response.data['max_pages'] = self.paginator.page.paginator.num_pages
+        return response
 
 class ApplicationExistsView(APIView):
     permission_classes = [IsAuthenticated]
@@ -125,7 +144,7 @@ class ApplicationRetrieveUpdateView(RetrieveUpdateAPIView):
                 content_object=instance,
                 message=f"Application status updated for pet {instance.pet.name}",
                 type='status_update',
-                action_link=f'/applications/{instance.id}'
+                action_link=f'/pet-seeker-adoption'
             )
 
         return response

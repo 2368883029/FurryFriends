@@ -48,6 +48,7 @@ class NotificationManageViewSet(ModelViewSet):
             sort = int(request.query_params.get('sort', 0))
             read = int(request.query_params.get('read', 0))
             page = int(request.query_params.get('page', 1))
+            tp = int(request.query_params.get('type', 0))
         except ValueError:
             return Response({"Invalid Input, all parameters must be integers."}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -56,6 +57,9 @@ class NotificationManageViewSet(ModelViewSet):
 
         if read not in [0, 1]:
             return Response({"Invalid value for 'read'."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if tp not in [0, 1]:
+            return Response({"Invalid value for 'type'"}, status=status.HTTP_400_BAD_REQUEST)
 
         if page < 1:
             return Response({"Invalid value for 'page'."}, status=status.HTTP_400_BAD_REQUEST)
@@ -75,8 +79,14 @@ class NotificationManageViewSet(ModelViewSet):
             list_ordered = list_ordered.order_by('-creation_time')
         else:
             list_ordered = list_ordered.order_by('creation_time')
-            
-        list_info = list_ordered.filter(read=is_read).filter(owner=current_user)[start:end]
+        
+        sp = "new_message"
+        print(tp)
+        print(list_ordered.filter(read=is_read).filter(owner=current_user))
+        if tp:
+            list_info = list_ordered.filter(read=is_read).filter(owner=current_user).filter(type=sp)[start:end]
+        else:
+            list_info = list_ordered.filter(read=is_read).filter(owner=current_user).exclude(type=sp)[start:end]
         serializer = self.get_serializer(list_info, many=True)
 
         return Response(serializer.data)

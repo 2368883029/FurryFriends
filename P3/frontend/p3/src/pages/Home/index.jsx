@@ -22,6 +22,8 @@ const Home = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <div className="d-flex flex-row justify-content-end align-items-center w-100">
+            <div className="g-signin2" data-onsuccess="onSignIn">
+            </div>
             <Link to="/login" className="text-dark font-weight-bold my-0 mr-2">Sign In</Link>
           </div>
         </div>

@@ -8,7 +8,8 @@ class Notifications(models.Model):
     TYPES = (
         ('new_comment', 'New Comment'),
         ('new_application', 'New application'),
-        ('status_update', 'Status update')
+        ('status_update', 'Status update'),
+        ('new_message', 'New message'),
     )
 
     owner = models.ForeignKey(Account, on_delete=models.CASCADE)

@@ -5,16 +5,17 @@ import { useContext, useState, useEffect } from 'react';
 import { APIContext } from "../../../contexts/APIContext";
 import BASE from "../../../constants/baseUrl";
 import emptyProfile from '../../../imgs/blank-profile.png';
+import "./card.css"
 
 /**
  */
-const AdoptionCard = ({ pet }) => {
+const AdoptionCard = ({ pet, type }) => {
 
     const {user} = useContext(APIContext);
     const pet_creation = pet.creation_time.split('T')[0];
     const pet_update = pet.last_update_time.split('T')[0];
 
-    const detailLink = `/detail/${pet.id}`;
+    const detailLink = `/petDetails/${pet.id}`;
     const chatLink = `/pet-seeker-adoption/${pet.id}/chat`;
     const reviewLink = `/pet-seeker-adoption/${pet.id}/review`;
     const helpLink = `/pet-seeker-adoption/${pet.id}/help`;
@@ -24,7 +25,8 @@ const AdoptionCard = ({ pet }) => {
 
     useEffect(() => {
         let err = 0;
-        fetch(`${BASE}/listings/${pet.id}/`, {
+
+        fetch(`${BASE}/listings/${pet.pet}/`, {
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
@@ -42,7 +44,40 @@ const AdoptionCard = ({ pet }) => {
                 setPetInfo(json);
             }
         })
-    }, [pet]);
+    }, [pet.pet]);
+    
+    const onApprove = async () => {
+      try {
+          const response = await fetch(`${BASE}/applications/all/pending/?page=1&all=1`, {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${user.token}`, 
+              },
+          });
+          if (!response.ok) {
+              throw new Error('Failed to fetch applications');
+          }
+          const json = await response.json();
+          const applications = json
+          for (const curr_application of applications) {
+              if (curr_application.pet !== pet.pet) {
+                  continue;
+              }
+              const newStatus = curr_application.id === pet.id ? "accepted" : "denied";
+              await fetch(`${BASE}/applications/${curr_application.id}/`, {
+                  method: "PATCH",
+                  headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": `Bearer ${user.token}`,
+                  },
+                  body: JSON.stringify({ status: newStatus })
+              });
+          }
+      } catch (error) {
+          console.error("Error in processing applications:", error);
+      }
+  }
 
     return (
     <>
@@ -79,24 +114,31 @@ const AdoptionCard = ({ pet }) => {
               </p>
               <p>
                 <span className="material-symbols-outlined"> home </span>
-                Shelter ID: {petInfo.shelter}
+                Approve Status: {pet.status}
               </p>
             </div>
-            <a href={detailLink} className="btn btn-secondary btn-petdetail">
+            <Link to={detailLink} className="btn btn-secondary btn-petdetail">
               <span className="material-symbols-outlined"> info </span>
               <span>Detail</span>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="col-12 col-md-6">
           <div className="card-body adoption-records-buttons">
-            <a href={chatLink} className="btn btn-secondary btn-petdetail">
-              <span className="material-symbols-outlined"> contact_page </span>
-              <span>Contact Shelter</span>
-            </a>
+            {type === false ? (
+                <a href="/contact-page" className="btn btn-secondary btn-petdetail" style={{"color": "white"}}>
+                    <span className="material-symbols-outlined"> contact_page </span>
+                    <span>Contact Page</span>
+                </a>
+            ) : (
+                <a onClick={onApprove} className="btn btn-secondary btn-petdetail">
+                    <span className="material-symbols-outlined"> check_circle </span>
+                    <span>Approve</span>
+                </a>
+            )}
             <a href={reviewLink} className="btn btn-light">
               <span className="material-symbols-outlined"> mode_comment </span>
-              <span>Leave Review</span>
+              <span>Check Reviews</span>
             </a>
             <a href={helpLink} className="btn btn-light">
               <span className="material-symbols-outlined"> help </span>

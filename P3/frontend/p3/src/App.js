@@ -12,8 +12,11 @@ import PetSeekerHelp from './pages/PetSeekerHelp';
 import PetSeekerAdoption from './pages/PetSeekerAdoption';
 import PetSeekerSecurity from './pages/PetSeekerSecurity';
 import PetAdd from './pages/PetAdd/pet-add';
+import PetUpdate from './pages/PetUpdate/pet-update';
 import { useState } from 'react';
 import PetDetails from './pages/PetDetails';
+import Notification from './pages/Notification';
+
 import PublicShelterDetails from './pages/PublicShelterDetails';
 
 function Webpages(){
@@ -21,6 +24,7 @@ function Webpages(){
     <Routes>
       <Route path="/" element={<Layout/>}>
         <Route index element={<NotFound />} />
+        <Route path='notification' element={<Notification/>}/>
         <Route path="pet-seeker-dashboard" element={<PetSeekerDashboard />} />
         <Route path="pet-seeker-help" element={<PetSeekerHelp />} />
         <Route path="pet-seeker-adoption" element={<PetSeekerAdoption />} />
@@ -28,6 +32,7 @@ function Webpages(){
         <Route path="petSearch" element={<PetSearch/>}/>
         <Route path="pet-add" element={<PetAdd/>}/>
         <Route path="petDetails/:id" element={<PetDetails/>}/>
+        <Route path="pet-update/:id" element={<PetUpdate/>}/>
         <Route path="shelterDetails/:id" element={<PublicShelterDetails/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>

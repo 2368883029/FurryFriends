@@ -21,12 +21,13 @@ const PetSeekerAdoption = () => {
     const [pets, setPets] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
+    const type = user.isShelter;
 
     useEffect(() => {
         if (user.userId === '') {
             navigate(`/login`);
         }
-    },[]);
+    },  [user.userId, navigate]);
     
     const handleSearch = () => {
         setQuery({...query, search: searchTerm});
@@ -36,10 +37,14 @@ const PetSeekerAdoption = () => {
         setSearchTerm(e.target.value);
     }
 
+    const changePage = (newPage) => {
+        setQuery(prevQuery => ({ ...prevQuery, page: newPage }));
+    };
+
     useEffect(() => {
         let err = 0;
         const {search, page, status} = query;
-        fetch(`${BASE}/applications/all/${status}/?${page}`, {
+        fetch(`${BASE}/applications/all/${status}/?page=${page}&search=${search}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -56,37 +61,46 @@ const PetSeekerAdoption = () => {
                 console.log(json);
             } else {
                 setPets(json.results);
+                console.log(json.results);
+                setTotalPages(json.max_pages);
             }
         })
     }, [query]);
 
 
     return (
-    <>
-        <div className="adoption-content">
-            <SideNevigation buttons={buttons} />
-            <div className="main-content">
-                <div className="pet-order-search">
-                    <div>{user.isShelter ? "Your Listings" : "Your Adoptions"}</div>
-                    <div class="input-group mb-3">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Search Your Orders"
-                        aria-label="Search"
-                        onChange={handleInputChanged}
-                        />
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" onClick={handleSearch}>
-                        Search
-                        </button>
+        <>
+            <div className="adoption-content">
+                <SideNevigation buttons={buttons} />
+                <div className="main-content">
+                    <div className="pet-order-search">
+                        <div>Your Adoptions</div>
+                        <div className="input-group mb-3">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Search Your Orders"
+                                aria-label="Search"
+                                onChange={handleInputChanged}
+                            />
+                            <div className="input-group-append">
+                                <button className="btn btn-outline-secondary" type="button" onClick={handleSearch}>
+                                    Search
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                 </div>
+                    <AdoptionList pets={pets} type={type} />
+                    <div >
+                    <p>
+                        {query.page > 1 && <button className="btn btn-outline-secondary" onClick={() => changePage(query.page - 1)}>Previous</button>}
+                        {query.page < totalPages && <button className="btn btn-outline-secondary" onClick={() => changePage(query.page + 1)}>Next</button>}
+                    </p>
+                    <p>Page {query.page} out of {totalPages}</p>
+                </div>
+                </div>
             </div>
-                <AdoptionList pets={pets}/>
-            </div>
-        </div>
-    </>
+        </>
     );
 };
 
