@@ -42,17 +42,16 @@ function App() {
     "firstName": "",
     "lastName" : "",
     "isShelter": false,
-    'avatar_src' : ""
-});
+    'avatar_src' : "",
+    "userId":"", })
+    
+    return (
+      <APIContext.Provider value={{user, setUser}}>
+        <main>
+          <Webpages />
+        </main>
+      </APIContext.Provider>
+    );
+  }
 
-
-  return (
-    <APIContext.Provider value={{user, setUser}}>
-      <main>
-        <Webpages />
-      </main>
-    </APIContext.Provider>
-  );
-}
-
-export default App;
+  export default App;

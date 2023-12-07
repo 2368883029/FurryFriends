@@ -5,31 +5,47 @@ import { APIContext } from '../../contexts/APIContext';
 import BASE from '../../constants/baseUrl';
 
 const PetSearch = () => {
-    const [query, setQuery] = useState({})
+    const [query, setQuery] = useState({page:1,name:"",status:"Available",sort:"name"});
     const [shelters, setShelters] = useState([])
     const {user} = useContext(APIContext);
 
-
-    // const getPets = () => {
-
-    // }
-
     const getShelters = () => {
-        console.log(user);
         fetch(`${BASE}/accounts/all/`,{
             headers: {Authorization: `Bearer ${user.token}`}
         }).then(res => res.json()).then(json => {
-            let shelters = [];
-            // json.map((shelter) => {
-            //     shelters.push({"id" : shelter.id, "username":shelter.username});
-            // });
+            let shelters_arr = [];
+            Object.keys(json).forEach((i) => {
+                let shelter = json[i];
+                shelters_arr.push({"id" : shelter.id, "username":shelter.username});
+            });
+            setShelters(shelters_arr);
+            return;
         })
     }
 
     useEffect(() => {
         getShelters();
-        // getPets();
     },[])
+
+    // useEffect(() => {
+    //     let url = `${BASE}/listings/all/?`;
+    //     Object.keys(query).forEach((key)=> {
+    //         console.log(key);
+    //         url = url.concat("", `${key}=${query.key}&`);
+    //     });
+    //     console.log(url);
+    //     // fetch(url,{
+    //     //     headers: {Authorization: `Bearer ${user.token}`}
+    //     // }).then(res => res.json()).then(json => {
+    //     //     let shelters_arr = [];
+    //     //     Object.keys(json).forEach((i) => {
+    //     //         let shelter = json[i];
+    //     //         shelters_arr.push({"id" : shelter.id, "username":shelter.username});
+    //     //     });
+    //     //     setShelters(shelters_arr);
+    //     //     return;
+    //     // })
+    // },[query]);
 
     return <>
     <div className="container-fluid d-flex justify-content-between flex-row flex-wrap align-items-center pt-4">
@@ -80,6 +96,15 @@ const PetSearch = () => {
                         <button className="filter-menu-option">2+</button>
                         <button className="filter-menu-option" >3+</button>
                         <button className="filter-menu-option">4+</button>
+                    </div>
+                </div>
+                <div className="d-flex flex-row justify-content-start align-items-center w-100 m-3">
+                    <p className="w-25 m-0 font-weight-bold">Shelter</p>
+                    <div className="d-flex justify-content-start align-items-center flex-fill">
+                        {shelters.map((s) => {
+                            return <button className="filter-menu-option" key ={s.id}>{s.username}</button>
+                        })}
+                        
                     </div>
                 </div>
             </div>

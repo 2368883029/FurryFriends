@@ -7,6 +7,7 @@ import { APIContext } from '../../contexts/APIContext';
 const Login = () => {
     const navigate = useNavigate();
     const {user , setUser} = useContext(APIContext);
+    let token = "---";
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -28,8 +29,7 @@ const Login = () => {
                 return res.json()
             }
         }).then(json => {
-            const newobj = {...user,"token":json.access};
-            setUser(newobj);
+            token = json.access;
             return fetch(`${BASE}/accounts/current/`,{
                 headers: {Authorization: `Bearer ${json.access}`}
         }).then (res => {
@@ -39,16 +39,15 @@ const Login = () => {
                 return res.json()
             }
         }).then(json => {
-            const newobj = {...user,
+            const newobj = {
                 "userId":json.id,
                 "firstName": json.first_name,
                 "lastName" : json.last_name,
                 "isShelter": json.isShelter,
-                'avatar_src' : json.avatar
+                'avatar_src' : json.avatar,
+                'token': token
             };
-            console.log(user);
             setUser(newobj);
-            console.log(user);
             navigate("/petSearch");
         })
         }).catch(error => {
