@@ -42,10 +42,6 @@ class PetListView(ListAPIView):
     queryset = Pet.objects.all()
     serializer_class = PetSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ["name", "breed", "color", "sex"]
-    ordering_fields = ["name", "age"]
-    ordering = "name"
 
     class PetPagination(PageNumberPagination):
         page_size = 10
@@ -67,8 +63,7 @@ class PetListView(ListAPIView):
         name =  self.request.query_params.get("name", "")
 
         # sort option, name or age
-        sort = self.request.query_params.get("sort", "name")
-
+        sort = self.request.query_params.get("sort", None)
 
         if shelter_id:
             queryset = queryset.filter(shelter__id=shelter_id)    
@@ -81,9 +76,9 @@ class PetListView(ListAPIView):
             queryset = queryset.filter(name__startswith=name) 
 
         if sort == 'name':
-            queryset.order_by('name')
+            queryset = queryset.order_by('name')
         else:
-            queryset.order_by('age')
+            queryset = queryset.order_by('age')
         return queryset
 
 

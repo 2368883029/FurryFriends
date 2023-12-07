@@ -82,3 +82,8 @@ a.view-pet-button:hover{
 .search-bar:focus-visible{
     outline: none;
 }
+
+.filter-menu-option.checked {
+    background-color: var(--purple);
+    color:white;
+}
