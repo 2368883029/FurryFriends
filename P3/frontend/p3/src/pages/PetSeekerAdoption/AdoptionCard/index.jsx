@@ -9,7 +9,6 @@ import emptyProfile from '../../../imgs/blank-profile.png';
 /**
  */
 const AdoptionCard = ({ pet }) => {
-    console.log(pet);
 
     const {user} = useContext(APIContext);
     const pet_creation = pet.creation_time.split('T')[0];
@@ -25,7 +24,7 @@ const AdoptionCard = ({ pet }) => {
 
     useEffect(() => {
         let err = 0;
-        fetch(`${BASE}/listings/${pet.id}/`, {
+        fetch(`${BASE}/listings/${pet.pet}/`, {
             method: "GET",
             headers:{
                 "Content-Type": "application/json",
@@ -40,11 +39,10 @@ const AdoptionCard = ({ pet }) => {
             if (err){
                 console.log(json);
             } else {
-                console.log(json);
                 setPetInfo(json);
             }
         })
-    }, pet);
+    }, [pet.pet]);
 
     return (
     <>
