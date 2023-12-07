@@ -2,66 +2,67 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-  }
-  
-  .comment-content {
+}
+
+.comment-content {
     width: 65%;
     padding: 10px;
-  }
-  
-  .comment {
+}
+
+.comment {
     border: 1px solid #ddd;
     margin-bottom: 10px;
     padding: 10px;
     background-color: #fff;
     border-radius: 8px;
-  }
-  
-  .comment p {
+}
+
+.comment p {
     margin: 0;
-  }
-  
-  .comment-form {
+}
+
+.comment-form {
     margin-top: 20px;
-  }
-  
-  .comment-form textarea {
+}
+
+.comment-form textarea {
     width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 10px;
-  }
-  
-  .comment-form button {
+}
+
+.comment-form button {
     background-color: #4caf50;
     color: #fff;
     padding: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .comment-form button:hover {
-    background-color: #45a049;
-  }
+}
 
-  header {
+.comment-form button:hover {
+    background-color: #45a049;
+}
+
+header {
     background-color: #4caf50;
     color: #fff;
     padding: 10px;
     text-align: center;
     border-radius: 8px;
     margin-bottom: 20px;
-  }
-  
-  .pagination {
+    margin-top: 100px;
+}
+
+.pagination {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-  }
-  
-  .pagination button {
+}
+
+.pagination button {
     padding: 8px 12px;
     cursor: pointer;
     background-color: #3498db;
@@ -69,16 +70,16 @@
     border: none;
     border-radius: 4px;
     outline: none;
-  }
-  
-  .pagination button:disabled {
+}
+
+.pagination button:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
-  }
-  
-  .pagination span {
+}
+
+.pagination span {
     display: flex;
     align-items: center;
     font-size: 16px;
     color: #333;
-  }
+}

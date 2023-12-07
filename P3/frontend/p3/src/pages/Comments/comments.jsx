@@ -84,7 +84,7 @@ const CommentPage = ({}) => {
   };
 
   return (
-    <>
+    <> 
       <header>Chat for {forShelter ? 'Shelter' : 'Application'} {objectId}</header>
       <div className="comments-container">
         <div className="comment-content">
