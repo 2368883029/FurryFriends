@@ -45,7 +45,8 @@ const Login = () => {
                 "lastName" : json.last_name,
                 "isShelter": json.isShelter,
                 'avatar_src' : json.avatar,
-                'token': token
+                'token': token,
+                'location': json.location,
             };
             setUser(newobj);
             localStorage.setItem("user", JSON.stringify(newobj));
