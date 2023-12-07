@@ -8,7 +8,7 @@
 }
 
 
-.content .main-content {
+.content.petAddContent .main-content {
     flex-grow: 1;
     background-color: var(--purple);
     display: flex;
@@ -105,7 +105,7 @@ input, textarea, select {
     text-decoration: none;
 }
 
-.content {
+.content.petAddContent {
     background-color: var(--purple);
 }
 

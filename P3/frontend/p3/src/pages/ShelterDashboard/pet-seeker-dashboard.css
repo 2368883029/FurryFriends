@@ -1,12 +1,9 @@
-.pet-seeker-content{
-    margin-top: 80px;
+.content{
     display: flex;
     overflow: hidden;
 }
 
-.pet-seeker-content .main-content{
-    /* height: 90vh; */
-    position: relative;
+.content .main-content{
     flex-grow: 1;
     background-color: white;
     display: flex;
@@ -17,7 +14,7 @@
     margin-right: 2em;
 }
 
-.pet-seeker-content .dashPic{
+.content .dashPic{
     border-radius: 50%;
     box-sizing: border-box;
     height:150px;
@@ -26,18 +23,18 @@
     margin-top: 2rem;
 }
 
-.pet-seeker-content .dashPic > img {
+.content .dashPic > img {
     height:100%;
     width:100%;
     object-fit: cover;
 }
 
-.pet-seeker-content #welcome-message{
+.content .dashPic + div{
     font-weight: 500;
     font-size: 1.5rem
 }
 
-.pet-seeker-content .dashboard-Profile-Tag{
+.content .dashboard-Profile-Tag{
     margin-top: 40px;
     width: 100%;
     display: flex;
@@ -46,19 +43,19 @@
     font-size: 1.3em;
 }
 
-.pet-seeker-content .dashboard-Profile-Tag > :nth-child(2){
+.content .dashboard-Profile-Tag > :nth-child(2){
     display: block;
     font-weight: 200;
     font-size: 0.7em;
     color: purple;
 }
 
-.pet-seeker-content .dashboard-Profile-Tag > :nth-child(1){
+.content .dashboard-Profile-Tag > :nth-child(1){
     font-weight: 500;
     font-size: 1em;
 }
 
-.pet-seeker-content #pet-card-container{
+.content #pet-card-container{
     display: flex;
     flex-direction: row;
     width: 80%;
@@ -66,13 +63,13 @@
 }
 
 /* Pet Card Container */
-.pet-seeker-content .card.pet-card{
+.content .card.pet-card{
     width:12rem;
     margin: 7px;
     border-radius:10px;
 }
 
-.pet-seeker-content .pet-card-image-cont{
+.content .pet-card-image-cont{
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     box-sizing: border-box;
@@ -86,7 +83,7 @@
 }
 
 
-.pet-seeker-content .view-pet-button{
+.content .view-pet-button{
     background-color: var(--purple);
     color:white;
     cursor:pointer;
@@ -99,10 +96,27 @@
     text-decoration: none;
 }
 
-.pet-seeker-content a.view-pet-button:hover{
+.content a.view-pet-button:hover{
     color: white;
     text-decoration: none;
 }
-
 /*End of Pet Card Container*/
 
+@media (max-width: 980px){
+
+    .content #side-navbar {
+        z-index: 300;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .content .main-content {
+        width: 100%;
+        margin-left: 2em;
+    }
+
+    .notification-dropdown .offset-dropdown-menu{
+        left: 0px !important;
+    }
+}

@@ -1,6 +1,7 @@
 .seciroty-content{
     display: flex;
     overflow: hidden;
+    margin-top: 80px;
 }
 
 .seciroty-content .main-content{

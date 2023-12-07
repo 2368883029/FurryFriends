@@ -9,7 +9,6 @@ import emptyProfile from '../../../imgs/blank-profile.png';
 /**
  */
 const AdoptionCard = ({ pet }) => {
-    console.log(pet);
 
     const {user} = useContext(APIContext);
     const pet_creation = pet.creation_time.split('T')[0];
@@ -40,11 +39,10 @@ const AdoptionCard = ({ pet }) => {
             if (err){
                 console.log(json);
             } else {
-                console.log(json);
                 setPetInfo(json);
             }
         })
-    }, pet);
+    }, [pet]);
 
     return (
     <>
@@ -67,7 +65,6 @@ const AdoptionCard = ({ pet }) => {
         <div className="col-1"></div>
         <div className="col-12 col-md-2">
           <div className="adoption-image">
-            {console.log(petInfo)}
             <img src={petInfo.avatar ? petInfo.avatar : emptyProfile} alt="profile pic"/>
           </div>
         </div>

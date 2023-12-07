@@ -28,7 +28,7 @@ const Home = () => {
       </nav>
     </div>
     {/* main content */}
-    <div className="content">
+    <div className="content homeContent">
       <div className="rectangle">
         <h1>Welcome to FurryFriends</h1>
         <p>Find your perfect furry friend today!</p>

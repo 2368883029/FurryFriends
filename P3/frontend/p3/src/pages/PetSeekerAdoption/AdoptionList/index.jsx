@@ -2,7 +2,6 @@ import AdoptionCard from "../AdoptionCard"
 
 
 const AdoptionList = ({pets}) => {
-    console.log(pets);
     return (
         <>
             <div className="pet-adoption-records">

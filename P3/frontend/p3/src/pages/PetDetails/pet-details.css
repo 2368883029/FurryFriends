@@ -66,3 +66,8 @@
 .status-pending{
     background-color:var(--purple);
 }
+
+.petDetailsCont{
+    margin-top:80px;
+    margin-bottom:20px;
+}

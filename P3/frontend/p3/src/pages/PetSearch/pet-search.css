@@ -87,3 +87,7 @@ a.view-pet-button:hover{
     background-color: var(--purple);
     color:white;
 }
+
+.searchBarCont{
+    margin-top:80px;
+}

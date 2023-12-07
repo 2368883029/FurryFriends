@@ -1,5 +1,5 @@
-import { Outlet, Link, useLocation } from "react-router-dom"
-import { useContext } from 'react';
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom"
+import { useContext, useEffect } from 'react';
 import { APIContext } from '../../contexts/APIContext';
 import BASE from '../../constants/baseUrl';
 import emptyProfile from '../../imgs/blank-profile.png';
@@ -9,6 +9,14 @@ const Layout = () => {
     const location = useLocation();
     const url = location.pathname;
     const {user} = useContext(APIContext);
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (user.token === "" || user.token === null){
+            navigate("/login");
+        }
+    },[])
 
     function showCard(event, cardId) {
         event.stopPropagation();
@@ -27,6 +35,7 @@ const Layout = () => {
     }
 
     return <>
+    <div id="top-navbar">
         <nav className="navbar navbar-expand-lg">
         <Link className="navbar-brand logolink" to="/petSearch">FurryFriends</Link>
         <button
@@ -139,6 +148,7 @@ const Layout = () => {
         </div>
         </div>
     </nav>
+    </div>
     <main>
         <Outlet/>
     </main>

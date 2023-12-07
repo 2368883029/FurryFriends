@@ -12,7 +12,7 @@ const PetSeekerAdoption = () => {
     const {user} = useContext(APIContext);
     const buttons = [
         { route: "/pet-seeker-dashboard", name: "Dashboard", icon: "account_circle" },
-        { route: "/pet-seeker-adoption", name: "Adoption", icon: "inventory_2" },
+        { route: "/pet-seeker-adoption", name: user.isShelter ? "Listings" : "Adoption", icon: "inventory_2" },
         { route: "/pet-seeker-security", name: "Security", icon: "passkey" },
         { route: "/pet-seeker-help", name: "Help", icon: "help" },
     ];
@@ -26,7 +26,7 @@ const PetSeekerAdoption = () => {
         if (user.userId === '') {
             navigate(`/login`);
         }
-    });
+    },[]);
     
     const handleSearch = () => {
         setQuery({...query, search: searchTerm});
@@ -37,7 +37,6 @@ const PetSeekerAdoption = () => {
     }
 
     useEffect(() => {
-        // const user = JSON.parse(localStorage.getItem("user"));
         let err = 0;
         const {search, page, status} = query;
         fetch(`${BASE}/applications/all/${status}/?${page}`, {
@@ -56,7 +55,6 @@ const PetSeekerAdoption = () => {
             if (err){
                 console.log(json);
             } else {
-                console.log(json.results);
                 setPets(json.results);
             }
         })
@@ -69,7 +67,7 @@ const PetSeekerAdoption = () => {
             <SideNevigation buttons={buttons} />
             <div className="main-content">
                 <div className="pet-order-search">
-                    <div>Your Adoptions</div>
+                    <div>{user.isShelter ? "Your Listings" : "Your Adoptions"}</div>
                     <div class="input-group mb-3">
                     <input
                         type="text"

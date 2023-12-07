@@ -1,0 +1,118 @@
+.pet-seeker-content .shelterDash .shelterPic{
+    border-radius: 50%;
+    box-sizing: border-box;
+    height:300px;
+    width:300px;
+    overflow:hidden;
+    margin-top: 2rem;
+}
+
+.pet-seeker-content .shelterDash .shelterPic > img {
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+.pet-seeker-content .shelterDash .shelter-rating + div{
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top: -20px
+}
+
+.pet-seeker-content .shelterDash .shelter-rating{
+    font-size: 1rem;
+    margin-top: -10px
+}
+
+.pet-seeker-content .shelterDash .checked {
+    color: orange;
+}
+
+.pet-seeker-content .shelterDash .description {
+    padding-left: 30px;
+}
+
+.pet-seeker-content .shelterDash.align-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.pet-seeker-content .shelterDash .manage-listings {
+    font-size: 30px;
+    padding-top: 20px;
+    color: var(--purple);
+}
+
+.pet-seeker-content .shelterDash .card {
+    width: 45%;
+    height: auto;
+    padding-bottom: 32px;
+    margin-bottom: 20px;
+}
+
+.pet-seeker-content .shelterDash .pet-image{
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.pet-seeker-content .shelterDash .pet-card-name{
+    font-size: 30px;
+    color: var(--purple);
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.pet-seeker-content .shelterDash .pet-card-information{
+    font-size: 22px;
+    margin-top: -5px;
+    padding-left: 10px;
+    color: rgb(128, 128, 128);
+}
+
+.pet-seeker-content .shelterDash .additional-pet-info {
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.pet-seeker-content .shelterDash .btn-petdetail{
+    height: 50px;
+    width: 150px;
+    background-color: var(--purple);
+}
+
+.pet-seeker-content .shelterDash .publish-date{
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.pet-seeker-content .shelterDash .add-listing{
+    font-size: 22px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: #000000;
+}
+
+@media (max-width: 1000px) {
+    .pet-seeker-content .shelterDash.align-cards {
+        display: block;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .pet-seeker-content .shelterDash .card {
+        width: 80%;
+        margin: auto;
+    }
+}
+
+.map-container{
+    width:300px;
+    height:300px;
+}
